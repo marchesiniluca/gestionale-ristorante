@@ -377,12 +377,12 @@
         }
 
         function avviaModificaProdotto(id) {
-            const prodotto = databaseMenu.find(p => p.id === id);
-            if (!prodotto) return;
+            const producto = databaseMenu.find(p => p.id === id);
+            if (!producto) return;
 
-            document.getElementById('nuovo-nome').value = prodotto.nome;
-            document.getElementById('nuovo-prezzo').value = prodotto.prezzo;
-            document.getElementById('nuova-categoria').value = prodotto.categoria;
+            document.getElementById('nuovo-nome').value = producto.nome;
+            document.getElementById('nuovo-prezzo').value = producto.prezzo;
+            document.getElementById('nuova-categoria').value = producto.categoria;
 
             idArticoloInModifica = id;
             const formContainer = document.getElementById('blocco-modulo-admin');
@@ -600,7 +600,6 @@
 
             bloccoStampa.innerHTML = htmlScontrino;
             
-            // 🚨 PROTEZIONE DA INTERRUZIONE / CRASH DEL BROWSER DURANTE LA STAMPA 🚨
             try {
                 window.print();
             } catch (error) {
@@ -636,10 +635,10 @@
                 prodotti: JSON.parse(JSON.stringify(comandaAttuale))
             };
 
-            // Esegue la stampa provando ad aprire il modulo nativo
-            costruisciHtmlEdEseguiStampa('CLIENTE', nuovaRicevuta.numero, nuovaRicevuta.tavolo, nuovaRicevuta.prodotti, nuovaRicevuta.data, nuovaRicevuta.metodoPagamento);
+            // ⛔ STAMPA RIMOSSA DA QUESTI PULSANTI COME RICHIESTO ⛔
+            // Non viene più invocata la funzione costruisciHtmlEdEseguiStampa() da qui.
 
-            // Salvataggio dei dati (eseguito SEMPRE anche in caso di blocco popup)
+            // Salvataggio dei dati immediato sul browser
             archivioRicevute.unshift(nuovaRicevuta);
             contatoreRicevute++;
 
@@ -695,7 +694,7 @@
                 const datiSalvati = storicovendite[p.nome] || { quantita: 0, incasso: 0 };
                 
                 let btnStato = p.attivo 
-                    ? `<button class="btn-mini-azione btn-mini-nascondi" onclick="cambiaVisibilitaProdotto(${p.id}, false)">Nascondi 👁️‍🗨️</button>`
+                    ? `<button class="btn-mini-azione btn-mini-nascondi" onclick="cambiaVisibilitaProdotto(${p.id}, false)">Nascondi 👁️‍qiya</button>`
                     : `<button class="btn-mini-azione btn-mini-mostra" onclick="cambiaVisibilitaProdotto(${p.id}, true)">Mostra 👁️</button>`;
 
                 const trControllo = document.createElement('tr');
@@ -762,10 +761,10 @@
             if(el) el.innerText = new Date().toLocaleString('it-IT', { dateStyle: 'medium', timeStyle: 'medium' });
         }
         
-        // Avvio immediato componenti hardware e grafiche
         impostaOra();
         setInterval(impostaOra, 1000);
         inizializzaPulsantiCassa();
     </script>
 </body>
 </html>
+
