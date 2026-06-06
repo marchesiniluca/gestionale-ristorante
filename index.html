@@ -1,3 +1,7 @@
+Cassa_24_Aggiornato.html
+Pagina
+/1
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -613,6 +617,7 @@
         let comandaAttuale = [];
         
         let idArticoloInModifica = null;
+        let idRicevutaInModifica = null; // Gestione del progressivo scontrino in modifica
         let vecchioNomeCatInModifica = null;
         let indexNotaModifica = null;
         let categoriaSelezionataBanco = "TUTTE";
@@ -828,8 +833,9 @@
         function svuotaComanda() {
             comandaAttuale = [];
             document.getElementById('num-tavolo').value = '';
+            idRicevutaInModifica = null; // Resetta lo stato di modifica della ricevuta
             aggiornaInterfacciaComanda();
-            showToast("Comanda archiviata.");
+            showToast("Comanda annullata.");
         }
 
         function apriModalResto() {
@@ -893,15 +899,29 @@
                 storicovendites[item.nome].incasso += (item.prezzo * item.quantita);
             });
 
-            const ricevuta = {
-                id: contatoreRicevute++, tavolo, totale: netto,
-                metodo, data: new Date().toISOString(), articoli: [...comandaAttuale]
-            };
+            if (idRicevutaInModifica !== null) {
+                // CASO MODIFICA: Aggiorna la ricevuta esistente mantenendo l'ID originario
+                const idx = archivioRicevute.findIndex(r => r.id === idRicevutaInModifica);
+                if (idx !== -1) {
+                    archivioRicevute[idx] = {
+                        id: idRicevutaInModifica,
+                        tavolo, totale: netto, metodo,
+                        data: new Date().toISOString(), articoli: [...comandaAttuale]
+                    };
+                    showToast(`Scontrino #${idRicevutaInModifica} modificato e salvato.`, "success");
+                }
+            } else {
+                // CASO NUOVA RICEVUTA: Incrementa il contatore progressivo
+                const ricevuta = {
+                    id: contatoreRicevute++, tavolo, totale: netto,
+                    metodo, data: new Date().toISOString(), articoli: [...comandaAttuale]
+                };
+                archivioRicevute.unshift(ricevuta);
+                showToast(`Incassato ${formattaEuro(netto)} con ${metodo}.`, "success");
+            }
 
-            archivioRicevute.unshift(ricevuta);
             salvaDatiLocali();
             svuotaComanda();
-            showToast(`Incassato ${formattaEuro(netto)} con ${metodo}.`, "success");
         }
 
         // RICHIAMO E STORNO SCONTRINI
@@ -924,10 +944,11 @@
                 }
             });
 
-            comandaAttuale = [...ricevuta.articoli];
+            comandaAttuale = JSON.parse(JSON.stringify(ricevuta.articoli));
             document.getElementById('num-tavolo').value = ricevuta.tavolo || '';
             
-            archivioRicevute.splice(idx, 1);
+            idRicevutaInModifica = id; 
+
             salvaDatiLocali();
             
             mostraArchivioRicevute();
@@ -937,7 +958,7 @@
             cambiaFinestra('CASSA');
             aggiornaInterfacciaComanda();
             
-            showToast(`Scontrino #${id} stornato. Modifica la comanda in cassa.`);
+            showToast(`Scontrino #${id} caricato in cassa per la modifica.`);
         }
 
         // NUOVA FUNZIONE: Elimina completamente lo scontrino senza riportarlo in cassa
@@ -1361,3 +1382,4 @@
     </script>
 </body>
 </html>
+
