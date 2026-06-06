@@ -3,241 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCassa Pro 2026 - Robust Color-Coded Edition</title>
+    <title>SmartCassa Pro - Ultimate</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/8634/8634075.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-main: #f8fafc;
             --surface: #ffffff;
             --border: #e2e8f0;
-            
+            --border-hover: #cbd5e1;
+            --border-focus: #0f172a;
             --text-main: #0f172a;
             --text-muted: #475569;
             --text-light: #94a3b8;
+            --input-bg: #f8fafc;
             
-            /* Gradienti Strutturali */
-            --primary-grad: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
-            --primary: #4f46e5;
-            --primary-light: #eef2ff;
-            
-            --alimenti-light: #ecfdf5;
-            --bevande-light: #f0f9ff;
-            
-            --accent: #f59e0b;
-            --accent-light: #fffbeb;
+            --primary: #0f172a;
+            --primary-hover: #1e293b;
+            --success: #10b981;
+            --success-dim: #ecfdf5;
+            --info: #3b82f6;
+            --info-dim: #eff6ff;
+            --warning: #f59e0b;
+            --warning-dim: #fffbeb;
             --danger: #ef4444;
-            --danger-light: #fef2f2;
+            --danger-dim: #fef2f2;
             
-            --radius-xl: 24px;
             --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
             
-            /* Ombreggiature Soft Premium */
-            --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
-            --shadow-md: 0 8px 16px -4px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
-            --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
-        body { background-color: var(--bg-main); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; -webkit-font-smoothing: antialiased; }
-        
-        /* HEADER */
-        header { background: var(--surface); padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-        .brand { display: flex; align-items: center; gap: 0.75rem; }
-        .brand h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-main); background: linear-gradient(to right, #0f172a, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .brand span { background: var(--primary-light); color: var(--primary); padding: 0.3rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .nav-buttons { display: flex; gap: 0.5rem; background: #f1f5f9; padding: 0.4rem; border-radius: var(--radius-md); }
-        .btn-nav { background: transparent; border: none; color: var(--text-muted); padding: 0.75rem 1.75rem; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 0.5rem; }
-        .btn-nav:hover { color: var(--text-main); }
-        .btn-nav.active { background: var(--surface); color: var(--text-main); box-shadow: var(--shadow-md); }
-        #data-ora { font-weight: 600; color: var(--text-muted); font-size: 0.9rem; background: #f1f5f9; padding: 0.5rem 1rem; border-radius: var(--radius-md); min-width: 160px; text-align: center; }
+        body.dark-mode {
+            --bg-main: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --border-hover: #475569;
+            --border-focus: #94a3b8;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --text-light: #64748b;
+            --input-bg: #0f172a;
+            
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --success-dim: rgba(16, 185, 129, 0.15);
+            --info-dim: rgba(59, 130, 246, 0.15);
+            --warning-dim: rgba(245, 158, 11, 0.15);
+            --danger-dim: rgba(239, 68, 68, 0.15);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
 
-        /* PANNELLI DI CONTROLLO */
-        .window-pane { display: none; padding: 2.5rem 3rem; flex: 1; max-width: 1750px; width: 100%; margin: 0 auto; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .window-pane.active { display: flex; gap: 2.5rem; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        html { scroll-behavior: smooth; }
 
-        /* BANCO CASSA */
-        .menu-container { flex: 2; display: flex; flex-direction: column; gap: 2.5rem; }
-        .sezione-blocco { background: var(--surface); padding: 2.25rem; border-radius: var(--radius-xl); border: 1px solid var(--border); box-shadow: var(--shadow-md); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: -0.01em; }
         
-        .titolo-sezione { font-size: 1.15rem; font-weight: 800; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        .titolo-sezione.alimenti { color: #047857; }
-        .titolo-sezione.bevande { color: #0369a1; }
-        
-        /* GRIGLIA PRODOTTI */
-        .grid-prodotti { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.25rem; }
-        .card-prodotto { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; background: var(--surface); cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); min-height: 130px; position: relative; overflow: hidden; box-shadow: var(--shadow-sm); user-select: none; }
-        .card-prodotto:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: #cbd5e1; }
-        .card-prodotto::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; }
-        .prodotto-alimenti::before { background: linear-gradient(to bottom, #10b981, #047857); }
-        .prodotto-bevande::before { background: linear-gradient(to bottom, #0ea5e9, #0369a1); }
-        .prodotto-alimenti:hover { background: var(--alimenti-light); }
-        .prodotto-bevande:hover { background: var(--bevande-light); }
-        
-        .nome-prodotto { font-weight: 700; font-size: 1.05rem; line-height: 1.4; color: var(--text-main); margin-bottom: 0.5rem; }
-        .prezzo-prodotto { font-weight: 800; font-size: 1.25rem; color: var(--text-main); margin-top: auto; }
+        body { background-color: var(--bg-main); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background-color 0.3s, color 0.3s; }
 
-        /* SIDEBAR SCONTRINO DIGITALE */
-        .comanda-container { flex: 1; max-width: 460px; background: var(--surface); border-radius: var(--radius-xl); padding: 2.25rem; border: 1px solid var(--border); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; height: fit-content; position: sticky; top: 2.5rem; }
-        .input-tavolo { width: 100%; padding: 1.1rem 1.5rem; border: 1px solid var(--border); border-radius: var(--radius-lg); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.75rem; background: #f8fafc; transition: all 0.2s; color: var(--text-main); text-transform: uppercase; text-align: center; }
-        .input-tavolo:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15); }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
         
-        .lista-comanda { list-style: none; margin-bottom: 1.75rem; max-height: 320px; overflow-y: auto; padding-right: 0.25rem; border-top: 1px solid var(--border); padding-top: 0.5rem; }
-        .item-comanda { display: flex; flex-direction: column; padding: 1.1rem 0; border-bottom: 1px dashed var(--border); }
-        .item-riga-alta { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-        .info-articolo-nome { font-weight: 600; color: var(--text-main); font-size: 1rem; }
-        .info-articolo-nome strong { color: var(--primary); font-weight: 800; margin-right: 0.25rem; }
+        header { background: var(--surface); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; transition: background-color 0.3s, border-color 0.3s; }
         
-        .nota-variazione { color: var(--accent); font-size: 0.8rem; font-weight: 700; margin-top: 0.6rem; cursor: pointer; background: var(--accent-light); padding: 0.35rem 0.75rem; border-radius: 6px; width: fit-content; border: 1px dashed rgba(245, 158, 11, 0.4); }
-        .nota-variazione:hover { background: #fef3c7; }
+        .brand { display: flex; align-items: center; gap: 0.5rem; }
+        .brand h1 { font-size: 1.15rem; font-weight: 800; color: var(--text-main); }
+        .brand span { background: var(--info-dim); color: var(--info); padding: 0.2rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
         
-        .controlli-qta { display: flex; align-items: center; gap: 0.4rem; background: #f1f5f9; padding: 0.25rem; border-radius: var(--radius-sm); }
-        .btn-modifica { background: var(--surface); border: 1px solid var(--border); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-weight: 800; color: var(--text-main); display: flex; align-items: center; justify-content: center; user-select: none; }
-        .btn-modifica:hover { background: #f8fafc; }
+        .nav-buttons { display: flex; gap: 0.35rem; background: var(--border); padding: 0.30rem; border-radius: var(--radius-lg); }
+        .btn-nav { background: transparent; border: none; color: var(--text-muted); padding: 0.6rem 1.4rem; border-radius: calc(var(--radius-lg) - 4px); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 0.5rem; }
+        .btn-nav:hover:not(.active) { color: var(--text-main); background: rgba(255, 255, 255, 0.1); }
+        .btn-nav.active { background: var(--surface); color: var(--text-main); box-shadow: var(--shadow-sm); font-weight: 700; }
         
-        .totale-box { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem 0; border-top: 2px dashed #94a3b8; margin-top: auto; font-size: 1.1rem; font-weight: 800; color: var(--text-muted); }
-        .totale-prezzo { font-size: 2rem; color: var(--text-main); font-weight: 900; letter-spacing: -0.04em; }
-        
-        /* PULSANTI AZIONE COLOR-CODED */
-        .btn-azione { width: 100%; border: none; padding: 1.1rem; border-radius: var(--radius-lg); font-size: 1.05rem; font-weight: 700; cursor: pointer; margin-bottom: 0.75rem; color: white; display: flex; justify-content: center; align-items: center; gap: 0.6rem; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); user-select: none; }
-        .btn-azione:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .btn-azione:active { transform: translateY(0); }
-        
-        .btn-stampa-completa { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); font-size: 1.1rem; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
-        .btn-stampa-completa:hover { box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
-        
-        .btn-stampa-cucina { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2); }
-        .btn-stampa-bar { background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2); }
-        
-        .blocco-pagamento { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; }
-        .btn-paga-contanti { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
-        .btn-paga-pos { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2); }
-        
-        .btn-svuota { background: #fff5f5; color: #ef4444; border: 1px solid #fca5a5; font-weight: 700; margin-bottom: 0; margin-top: 0.5rem; box-shadow: none; }
-        .btn-svuota:hover { background: #fecaca; color: #b91c1c; border-color: #ef4444; }
+        .header-tools { display: flex; align-items: center; gap: 0.5rem; }
+        .theme-toggle { background: var(--border); border: none; font-size: 1.1rem; cursor: pointer; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; transition: all 0.2s; }
+        .theme-toggle:hover { background: var(--border-hover); }
+        .theme-toggle.active-format { background: var(--primary); color: white; border-color: var(--primary); }
+        #data-ora { font-weight: 500; color: var(--text-muted); font-size: 0.8rem; background: var(--input-bg); padding: 0.4rem 0.8rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-left: 0.5rem; }
 
-        /* SCHERMATA AMMINISTRAZIONE */
-        .archivio-full { width: 100%; display: flex; flex-direction: column; gap: 2.5rem; }
-        .split-archivio { display: flex; gap: 2.5rem; }
-        .blocco-sinistro { flex: 1.4; display: flex; flex-direction: column; gap: 2.5rem; }
-        .blocco-destro { flex: 1; }
-        
-        .admin-form { display: flex; gap: 1rem; margin-bottom: 2rem; background: #f8fafc; padding: 1.75rem; border-radius: var(--radius-lg); border: 1px solid var(--border); transition: all 0.3s; }
-        .admin-form.editing-mode { background: #fffbeb; border-color: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15); }
-        .admin-form input, .admin-form select { padding: 0.95rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 1rem; background: var(--surface); outline: none; color: var(--text-main); font-weight: 600; }
-        
-        .btn-admin-add { background: var(--primary-grad); color: white; border: none; padding: 0.95rem 2rem; border-radius: var(--radius-md); font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; user-select: none; }
-        .btn-admin-add.btn-edit-active { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .window-pane { display: none; padding: 1.5rem 2rem; flex: 1; max-width: 1750px; width: 100%; margin: 0 auto; animation: fadeIn 0.2s ease-out; }
+        .window-pane.active { display: flex; gap: 1.5rem; align-items: flex-start; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        .lista-gestione-rapida { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); background: var(--surface); margin-bottom: 1rem; }
-        .tabella-gestione { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-        .tabella-gestione th, .tabella-gestione td { padding: 1.2rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
-        .tabella-gestione th { background: #f8fafc; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid var(--border); }
+        .menu-container { flex: 2; display: flex; flex-direction: column; gap: 1.25rem; width: 100%; }
+        .sezione-blocco { background: var(--surface); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: background-color 0.3s, border-color 0.3s; }
         
-        /* BADGES STATUS */
-        .badge { display: inline-flex; align-items: center; padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-        .badge-attivo { background: var(--alimenti-light); color: #047857; border: 1px solid rgba(16, 185, 129, 0.2); }
-        .badge-nascosto { background: var(--danger-light); color: #b91c1c; border: 1px solid rgba(239, 68, 68, 0.2); }
-        .badge-contanti { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-        .badge-pos { background: #f5f3ff; color: #5b21b6; border: 1px solid #ddd6fe; }
+        .titolo-sezione { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: space-between; }
         
-        /* BOTTONI MINI */
-        .btn-mini-azione { border: 1px solid var(--border); padding: 0.5rem 0.85rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: all 0.15s; box-shadow: var(--shadow-sm); margin-right: 0.25rem; user-select: none; }
-        .btn-mini-modifica { background: #f5f3ff; color: #6d28d9; border-color: #ddd6fe; }
-        .btn-mini-modifica:hover { background: #ede9fe; border-color: #7c3aed; }
-        .btn-mini-nascondi { background: #f8fafc; color: #475569; border-color: #cbd5e1; }
-        .btn-mini-nascondi:hover { background: #f1f5f9; color: #0f172a; }
-        .btn-mini-mostra { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-        .btn-mini-mostra:hover { background: #d1fae5; color: #065f46; }
-        .btn-mini-elimina { background: #fef2f2; color: #ef4444; border-color: #fca5a5; }
-        .btn-mini-elimina:hover { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+        .barra-filtri-banco { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+        .tab-filtro { padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.15s ease; }
+        .tab-filtro:hover { border-color: var(--border-hover); color: var(--text-main); }
+        .tab-filtro.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* VENDITE CONTABILI REPORT */
-        .tabella-report { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-        .tabella-report th, .tabella-report td { padding: 1.2rem 1.5rem; text-align: left; border-bottom: 1px solid var(--border); }
-        .tabella-report th { background-color: #f8fafc; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid var(--border); }
-        .scroll-table { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); background: var(--surface); }
+        .grid-prodotti { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
+        .card-prodotto { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; background: var(--surface); cursor: pointer; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); min-height: 105px; user-select: none; position: relative; }
+        .card-prodotto:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-hover); }
+        .card-prodotto:active { transform: translateY(0); }
         
-        .box-riepilogo-finanziario { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.25rem; }
-        .card-finanziaria { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-        .card-finanziaria .titolo-f { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-        .card-finanziaria .valore-f { font-size: 1.75rem; font-weight: 900; color: var(--text-main); margin-top: 0.35rem; }
+        .card-icon { font-size: 1.5rem; margin-bottom: 0.25rem; display: block; opacity: 0.9; }
+        .nome-prodotto { font-weight: 700; font-size: 0.85rem; line-height: 1.3; color: var(--text-main); }
+        .prezzo-prodotto { font-weight: 800; font-size: 0.95rem; color: var(--text-main); margin-top: auto; padding-top: 0.75rem; text-align: right; }
 
-        /* STORICO RICEVUTE */
-        .ricevuta-card-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); transition: all 0.2s; }
-        .ricevuta-info-testo { font-size: 0.95rem; line-height: 1.6; }
-        .ricevuta-info-testo strong { font-size: 1.1rem; color: var(--text-main); }
-        .btn-ristampa { background-color: var(--surface); border: 1px solid #cbd5e1; color: var(--text-main); padding: 0.6rem 1.25rem; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-sm); user-select: none; }
-        .btn-ristampa:hover { background: #f1f5f9; border-color: #94a3b8; }
+        /* Comanda */
+        .comanda-container { flex: 1; max-width: 400px; width: 100%; background: var(--surface); border-radius: var(--radius-lg); padding: 1.5rem; border: 1px solid var(--border); box-shadow: var(--shadow-md); display: flex; flex-direction: column; position: sticky; top: 5rem; max-height: calc(100vh - 6.5rem); transition: background-color 0.3s; }
+        .input-tavolo { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; background: var(--input-bg); color: var(--text-main); text-align: center; transition: all 0.15s ease; }
+        .input-tavolo:focus { outline: none; border-color: var(--text-main); background: var(--surface); }
+        
+        .lista-comanda { list-style: none; margin-bottom: 1rem; overflow-y: auto; border-top: 1px solid var(--border); padding-top: 0.25rem; overscroll-behavior: contain; flex: 1; }
+        .comanda-vuota-stato { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-light); font-size: 0.8rem; padding: 3rem 1rem; font-weight: 500; text-align: center; gap: 0.5rem; }
+        
+        .item-comanda { display: flex; flex-direction: column; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+        .item-riga-alta { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+        .info-articolo-nome { font-weight: 500; font-size: 0.85rem; color: var(--text-main); }
+        .info-articolo-nome strong { color: var(--text-muted); font-weight: 700; margin-right: 0.25rem; }
+        
+        .nota-variazione { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; margin-top: 0.35rem; cursor: pointer; background: var(--input-bg); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); width: fit-content; border: 1px solid var(--border); transition: all 0.1s ease; }
+        .nota-variazione:hover { background: var(--border); color: var(--text-main); }
+        
+        .controlli-qta { display: flex; align-items: center; gap: 0.2rem; background: var(--border); padding: 0.2rem; border-radius: var(--radius-sm); }
+        .btn-modifica { background: var(--surface); border: none; width: 24px; height: 24px; border-radius: calc(var(--radius-sm) - 2px); cursor: pointer; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--text-main); box-shadow: var(--shadow-sm); transition: all 0.1s ease; }
+        .btn-modifica:hover { background: var(--input-bg); transform: scale(1.05); }
 
-        /* LAYOUT STAMPA PROFESSIONALE */
+        .totale-box { display: flex; flex-direction: column; padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+        .riga-totale { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+        .riga-totale.netto { font-size: 0.85rem; margin-bottom: 0; margin-top: 0.25rem; color: var(--text-main); }
+        .totale-prezzo { font-size: 1.4rem; color: var(--text-main); font-weight: 800; letter-spacing: -0.02em; }
+        
+        .btn-azione { width: 100%; border: none; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.88rem; font-weight: 600; cursor: pointer; margin-bottom: 0.5rem; color: var(--text-main); display: flex; justify-content: center; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); background: var(--input-bg); border: 1px solid var(--border); }
+        .btn-azione:hover:not(:disabled) { background: var(--border); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-azione:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; box-shadow: none !important; border-style: dashed; }
+        
+        .btn-stampa-completa { background: var(--primary); color: white; border: none; }
+        .btn-stampa-completa:hover:not(:disabled) { background: var(--primary-hover); }
+        
+        .blocco-pagamento { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.25rem; }
+        .btn-paga-contanti { background: #10b981; color: white; font-weight: 700; border: none; }
+        .btn-paga-contanti:hover:not(:disabled) { background: #059669; }
+        .btn-paga-pos { background: #3b82f6; color: white; font-weight: 700; border: none; }
+        .btn-paga-pos:hover:not(:disabled) { background: #2563eb; }
+        
+        .btn-svuota { background: transparent; color: var(--danger); border: 1px solid transparent; box-shadow: none; font-size: 0.82rem; margin-top: 0.35rem; }
+        .btn-svuota:hover:not(:disabled) { background: var(--danger-dim); border-color: rgba(239, 68, 68, 0.2); }
+
+        /* Archivio */
+        .archivio-full { width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
+        .split-archivio { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .blocco-sinistro { flex: 1.6; display: flex; flex-direction: column; gap: 1.5rem; min-width: 300px; }
+        .blocco-destro { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1.5rem; }
+        
+        .admin-form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; background: var(--input-bg); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border); }
+        .admin-form input, .admin-form select { padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.85rem; background: var(--surface); color: var(--text-main); font-weight: 500; flex: 1; min-width: 140px; }
+        
+        .btn-admin-add { background: var(--primary); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.15s ease; }
+        .btn-admin-add:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+        .scroll-table { border: 1px solid var(--border); border-radius: var(--radius-md); overflow-x: auto; background: var(--surface); max-height: 400px; }
+        .tabella-base { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 500px; }
+        .tabella-base th, .tabella-base td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .tabella-base th { background: var(--input-bg); font-weight: 600; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; z-index: 10; }
+        
+        .box-riepilogo-finanziario { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+        .card-finanziaria { background: var(--surface); border: 1px solid var(--border); padding: 1rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+        .card-finanziaria .titolo-f { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+        .card-finanziaria .valore-f { font-size: 1.2rem; font-weight: 700; margin-top: 0.25rem; color: var(--text-main); }
+        
+        .btn-mini-azione { border: 1px solid var(--border); padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.78rem; font-weight: 600; background: var(--surface); color: var(--text-muted); transition: all 0.1s ease; margin-right: 2px; }
+        .btn-mini-azione:hover { background: var(--input-bg); color: var(--text-main); border-color: var(--border-hover); }
+        .btn-mini-modifica { background: var(--input-bg); color: var(--text-main); font-weight: 700; }
+        .btn-mini-elimina { background: var(--danger-dim); color: var(--danger); border-color: transparent; }
+        .btn-mini-elimina:hover { background: var(--danger); color: white; }
+        
+        .backup-block { display: flex; gap: 0.5rem; margin-top: 1rem; padding: 1rem; background: var(--input-bg); border-radius: var(--radius-md); border: 1px dashed var(--border); align-items: center; justify-content: space-between; flex-wrap: wrap; }
+
+        .ricevuta-card-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.15s ease; }
+        .ricevuta-card-item:hover { border-color: var(--border-hover); box-shadow: var(--shadow-sm); }
+        .ricevuta-dettaglio { display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--text-muted); }
+        .ricevuta-card-item.expanded .ricevuta-dettaglio { display: block; }
+        #lista-ricevute-storico { max-height: 400px; overflow-y: auto; }
+        #lista-chiusure-storico { max-height: 300px; overflow-y: auto; }
+
+        #toast-container { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+        .toast { padding: 0.85rem 1.25rem; border-radius: var(--radius-md); font-weight: 500; font-size: 0.85rem; color: white; box-shadow: var(--shadow-lg); animation: slideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; min-width: 280px; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); }
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--danger); }
+        .toast.fade-out { animation: fadeOut 0.2s ease-in forwards; }
+        @keyframes slideIn { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.15s ease; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-box { background: var(--surface); padding: 1.5rem; border-radius: var(--radius-lg); width: 90%; max-width: 380px; box-shadow: var(--shadow-lg); border: 1px solid var(--border); transform: scale(0.95); transition: transform 0.15s ease; color: var(--text-main); }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .modal-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.4; }
+        .modal-box input { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 1.25rem; background: var(--input-bg); color: var(--text-main); }
+        .modal-box input:focus { border-color: var(--primary); outline: none; }
+        .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+        .btn-modal { padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem; cursor: pointer; border: none; transition: all 0.1s ease; }
+        .btn-modal.cancel { background: var(--input-bg); color: var(--text-muted); border: 1px solid var(--border); }
+        .btn-modal.cancel:hover { background: var(--border); color: var(--text-main); }
+        .btn-modal.confirm { background: var(--primary); color: white; }
+        .btn-modal.confirm:hover { background: var(--primary-hover); }
+
+        /* Stampa */
         #blocco-stampa { display: none; }
         @media print {
-            body { background: white; color: black; }
-            header, .window-pane { display: none !important; }
-            #blocco-stampa { display: block !important; padding: 8px; font-family: 'Courier New', monospace; width: 100%; font-size: 11pt; line-height: 1.4; }
-            .stampa-titolo { text-align: center; font-size: 15pt; font-weight: bold; margin-bottom: 12px; border-bottom: 2px dashed #000; padding-bottom: 8px; }
-            .stampa-info { margin-bottom: 15px; font-size: 11pt; line-height: 1.5; }
-            .stampa-tabella { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-            .stampa-tabella th, .stampa-tabella td { text-align: left; padding: 5px 0; vertical-align: top; }
-            .stampa-totale { text-align: right; font-size: 15pt; font-weight: bold; border-top: 2px dashed #000; padding-top: 8px; }
+            body, .dark-mode { background: white !important; color: black !important; }
+            header, .window-pane, #toast-container { display: none !important; }
+            #blocco-stampa { display: block !important; width: 100%; margin: 0 auto; }
+            .stampa-titolo { text-align: center; font-weight: bold; text-transform: uppercase; }
+            .stampa-subtitolo { text-align: center; font-weight: bold; border-bottom: 1px dashed #000; padding-bottom: 6px; margin-bottom: 8px; }
+            .stampa-tabella { width: 100%; border-collapse: collapse; }
+            .stampa-totale { text-align: right; font-weight: bold; border-top: 1px dashed #000; padding-top: 4px; margin-top: 8px; }
+            body.format-print-80mm #blocco-stampa { max-width: 80mm; font-family: 'Courier New', monospace; font-size: 10pt; }
+            body.format-print-80mm .stampa-titolo { font-size: 11pt; }
+            body.format-print-80mm .stampa-subtitolo { font-size: 9pt; }
+            body.format-print-80mm .stampa-totale { font-size: 12pt; }
+            body.format-print-a4 #blocco-stampa { max-width: 210mm; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 12pt; padding: 10mm; }
+            body.format-print-a4 .stampa-titolo { font-size: 16pt; margin-bottom: 4px; text-align: left; }
+            body.format-print-a4 .stampa-subtitolo { font-size: 11pt; padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid #000; text-align: left; }
+            body.format-print-a4 .stampa-totale { font-size: 14pt; border-top: 1px solid #000; }
+            body.format-print-a4 .stampa-tabella td { padding: 4px 0; }
+        }
+
+        @media (max-width: 1024px) {
+            .window-pane.active { flex-direction: column; }
+            .comanda-container { max-width: 100%; position: static; max-height: none; }
+        }
+        @media (max-width: 600px) {
+            header { padding: 0.75rem 1rem; }
+            .nav-buttons { width: 100%; }
+            .btn-nav { flex: 1; justify-content: center; }
+            .grid-prodotti { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+            .window-pane { padding: 1rem; }
         }
     </style>
 </head>
-<body>
+<body class="">
 
     <header>
         <div class="brand">
             <h1>SmartCassa Pro</h1>
-            <span>v3.8 Safe Edition</span>
+            <span>Ultimate Edition</span>
         </div>
         <div class="nav-buttons">
-            <button id="nav-cassa" class="btn-nav active" onclick="cambiaFinestra('CASSA')">📱 BANCO VENDITA</button>
-            <button id="nav-archivio" class="btn-nav" onclick="cambiaFinestra('ARCHIVIO')">⚙️ LISTINO & ARCHIVIO</button>
+            <button id="nav-cassa" class="btn-nav active" onclick="cambiaFinestra('CASSA')" title="Scorciatoia: F1">📊 Cassa</button>
+            <button id="nav-archivio" class="btn-nav" onclick="cambiaFinestra('ARCHIVIO')" title="Scorciatoia: F2">⚙️ Impostazioni</button>
         </div>
-        <div id="data-ora"></div>
+        <div class="header-tools">
+            <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Cambia Tema">🌙</button>
+            <button id="print-a4-toggle" class="theme-toggle" onclick="setPrintFormat('A4')" title="Formato Stampa A4">📄</button>
+            <button id="print-80mm-toggle" class="theme-toggle" onclick="setPrintFormat('80MM')" title="Formato Stampa Termica 80mm">🧾</button>
+            <div id="data-ora">--:--:--</div>
+        </div>
     </header>
 
     <div id="pane-cassa" class="window-pane active">
         <div class="menu-container">
-            <section class="sezione-blocco">
-                <h2 class="titolo-sezione alimenti">🍔 Alimenti & Cucina</h2>
-                <div class="grid-prodotti" id="grid-alimenti"></div>
-            </section>
-            <section class="sezione-blocco">
-                <h2 class="titolo-sezione bevande">🥤 Bevande & Bar</h2>
-                <div class="grid-prodotti" id="grid-bevande"></div>
-            </section>
+            <div class="sezione-blocco" style="padding: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                <input type="text" id="ricerca-banco" class="input-tavolo" placeholder="🔍 Cerca (premi Invio per aggiungere)" style="margin-bottom: 0; max-width: 300px; text-align: left;" oninput="impostaFiltroRicerca(this.value)">
+                <div class="barra-filtri-banco" id="contenitore-tabs-banco"></div>
+            </div>
+            <div id="contenitore-banco-categorie" style="display: flex; flex-direction: column; gap: 1.25rem;"></div>
         </div>
 
         <aside class="comanda-container">
-            <input type="text" id="num-tavolo" class="input-tavolo" placeholder="Tavolo / Nome Cliente">
-            <ul class="lista-comanda" id="corpo-comanda"></ul>
+            <input type="text" id="num-tavolo" class="input-tavolo" placeholder="Tavolo / Nome Cliente" autocomplete="off">
             
+            <ul class="lista-comanda" id="corpo-comanda"></ul>
+
             <div class="totale-box">
-                <span>CORRISPETTIVO</span>
-                <span id="totale-comanda" class="totale-prezzo">0.00 €</span>
+                <div class="riga-totale netto">
+                    <span>TOTALE DA PAGARE</span>
+                    <span id="totale-comanda" class="totale-prezzo">0,00 €</span>
+                </div>
             </div>
             
-            <button class="btn-azione btn-stampa-completa" onclick="avviaStampa('CLIENTE')">🖨️ Stampa Ricevuta</button>
+            <button id="btn-azione-ricevuta" class="btn-azione btn-stampa-completa" onclick="avviaStampa('CLIENTE')" disabled>🖨️ Stampa Ricevuta</button>
             
             <div style="display: flex; gap: 0.5rem;">
-                <button class="btn-azione btn-stampa-cucina" onclick="avviaStampa('CUCINA')">🍳 Comanda Cucina</button>
-                <button class="btn-azione btn-stampa-bar" onclick="avviaStampa('BAR')">🍺 Comanda Bar</button>
+                <button id="btn-azione-cucina" class="btn-azione" onclick="avviaStampa('CUCINA')" disabled>📋 Cucina</button>
+                <button id="btn-azione-bar" class="btn-azione" onclick="avviaStampa('BAR')" disabled>☕ Bar</button>
             </div>
             
             <div class="blocco-pagamento">
-                <button class="btn-azione btn-paga-contanti" onclick="chiudiEArchiviaOrdine('CONTANTI')">💵 Contanti</button>
-                <button class="btn-azione btn-paga-pos" onclick="chiudiEArchiviaOrdine('POS')">💳 POS Card</button>
+                <button id="btn-azione-contanti" class="btn-azione btn-paga-contanti" onclick="apriModalResto()" title="Scorciatoia: Barra Spaziatrice" disabled>💶 Contanti</button>
+                <button id="btn-azione-pos" class="btn-azione btn-paga-pos" onclick="chiudiEArchiviaOrdine('POS')" disabled>💳 POS / Carte</button>
             </div>
             
-            <button class="btn-azione btn-svuota" onclick="svuotaComanda()">Annulla Comanda</button>
+            <button id="btn-azione-svuota" class="btn-azione btn-svuota" onclick="svuotaComanda()" disabled>Annulla operazione in corso</button>
         </aside>
     </div>
 
@@ -246,44 +316,30 @@
             <div class="split-archivio">
                 
                 <div class="blocco-sinistro">
-                    <div class="sezione-blocco">
-                        <h2 class="titolo-sezione" style="color: var(--primary);">🛠️ Gestione Articoli & Listino Menu</h2>
-                        <div class="admin-form" id="blocco-modulo-admin">
-                            <input type="text" id="nuovo-nome" placeholder="Nome prodotto" style="flex: 2;">
-                            <input type="number" id="nuovo-prezzo" placeholder="Prezzo (€)" step="0.10" style="flex: 1;">
-                            <select id="nuova-categoria" style="flex: 1;">
-                                <option value="ALIMENTI">🍔 ALIMENTI</option>
-                                <option value="BEVANDE">🥤 BEVANDE</option>
-                            </select>
-                            <button class="btn-admin-add" id="btn-salva-articolo" onclick="aggiungiOAggiornaProdottoAlListinoMenu()">Aggiungi Articolo</button>
+                    
+                    <div class="sezione-blocco" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <h2 class="titolo-sezione" style="color: var(--primary);">📈 Top 5 Prodotti</h2>
+                            <div id="grafico-top5" style="margin-top: 1rem;"></div>
                         </div>
-                        
-                        <div class="lista-gestione-rapida">
-                            <table class="tabella-gestione">
-                                <thead>
-                                    <tr>
-                                        <th>Articolo</th>
-                                        <th>Reparto</th>
-                                        <th>Prezzo</th>
-                                        <th>Stato</th>
-                                        <th style="text-align: right;">Azioni Rapide</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="lista-controllo-menu"></tbody>
-                            </table>
+                        <div>
+                            <h2 class="titolo-sezione" style="color: var(--info);">🕒 Ore di Picco (Incassi)</h2>
+                            <div id="grafico-ore" style="margin-top: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;"></div>
                         </div>
                     </div>
 
                     <div class="sezione-blocco">
-                        <h2 class="titolo-sezione" style="color: var(--text-main);">📊 Registro Giornaliero & Chiusura</h2>
-                        <div class="scroll-table">
-                            <table class="tabella-report">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h2 class="titolo-sezione" style="margin-bottom: 0;">Report Vendite Giornaliero</h2>
+                            <button class="btn-mini-azione" onclick="esportaReportCSV()" style="font-weight:700;">📊 Scarica Excel (CSV)</button>
+                        </div>
+                        <div class="scroll-table" style="max-height: 250px;">
+                            <table class="tabella-base">
                                 <thead>
                                     <tr>
-                                        <th>Nome Prodotto</th>
-                                        <th>Reparto</th>
-                                        <th>Quantità Totale</th>
-                                        <th>Incasso Lordo (€)</th>
+                                        <th>Articolo</th>
+                                        <th>Q.tà</th>
+                                        <th>Incasso</th>
                                     </tr>
                                 </thead>
                                 <tbody id="corpo-report-vendites"></tbody>
@@ -291,29 +347,167 @@
                         </div>
 
                         <div class="box-riepilogo-finanziario">
-                            <div class="card-finanziaria" style="border-left: 5px solid #10b981;">
-                                <div class="titolo-f" style="color: #059669; font-weight: 700;">💰 Totale Contanti</div>
-                                <div class="valore-f" id="fin-contanti">0.00 €</div>
+                            <div class="card-finanziaria" style="border-left: 4px solid var(--success);">
+                                <div class="titolo-f">Totale Contanti</div>
+                                <div class="valore-f" id="fin-contanti">0,00 €</div>
                             </div>
-                            <div class="card-finanziaria" style="border-left: 5px solid #8b5cf6;">
-                                <div class="titolo-f" style="color: #7c3aed; font-weight: 700;">💳 Totale POS</div>
-                                <div class="valore-f" id="fin-pos">0.00 €</div>
+                            <div class="card-finanziaria" style="border-left: 4px solid var(--info);">
+                                <div class="titolo-f">Totale POS</div>
+                                <div class="valore-f" id="fin-pos">0,00 €</div>
                             </div>
-                            <div class="card-finanziaria" style="background: #f8fafc; border-left: 5px solid #2563eb;">
-                                <div class="titolo-f" style="color: #1d4ed8; font-weight: 700;">📈 Incasso Totale</div>
-                                <div class="valore-f" id="fin-totale-generale" style="color: #1d4ed8;">0.00 €</div>
+                            <div class="card-finanziaria" style="border-left: 4px solid var(--primary);">
+                                <div class="titolo-f">Incasso Totale</div>
+                                <div class="valore-f" id="fin-totale-generale">0,00 €</div>
                             </div>
                         </div>
 
-                        <button class="btn-azione" onclick="azzeraTuttoIlSistema()" style="background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); width: auto; margin-top: 1.5rem; padding: 0.75rem 1.5rem; font-size: 0.9rem;">⚠️ Chiusura Serale Z (Azzera Giornata)</button>
+                        <button class="btn-azione" onclick="confermaAzzeraTutto()" style="background: var(--danger-dim); color: var(--danger); border: 1px dashed var(--danger); margin-top: 1.25rem; font-weight: 700;">⚠️ Esegui Chiusura Giornaliera (Salva e Azzera)</button>
+                    </div>
+
+                    <div class="sezione-blocco">
+                        <h2 class="titolo-sezione" id="titolo-modulo-cat">Categorie Menu</h2>
+                        <div class="admin-form" id="blocco-modulo-cat">
+                            <input type="text" id="nuova-cat-nome" placeholder="Nome Categoria" autocomplete="off">
+                            <button class="btn-admin-add" id="btn-salva-cat" onclick="aggiungiOModificaCategoria()">Salva</button>
+                            <button class="btn-admin-add" id="btn-annulla-cat" onclick="annullaStatoModificaCat()" style="background:var(--border); color:var(--text-main); display:none;">Annulla</button>
+                        </div>
+                        <div class="scroll-table" style="max-height: 200px;">
+                            <table class="tabella-base">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;">Ord.</th>
+                                        <th>Nome Categoria</th>
+                                        <th style="text-align: right;">Azioni</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-controllo-categorie"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="sezione-blocco">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h2 class="titolo-sezione" id="titolo-modulo-admin" style="margin-bottom: 0;">Anagrafica Articoli</h2>
+                            <select id="filtro-categoria-admin" style="padding: 0.4rem 0.6rem; font-size: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background:var(--surface); color:var(--text-main);" onchange="aggiornaTabellaReportEListino()">
+                                <option value="TUTTE">Tutte le Categorie</option>
+                            </select>
+                        </div>
+                        <div class="admin-form" id="blocco-modulo-admin">
+                            <input type="text" id="nuovo-nome" placeholder="Nome articolo" autocomplete="off">
+                            <input type="number" id="nuovo-prezzo" placeholder="Prezzo (€)" step="0.05">
+                            <select id="nuova-categoria"></select>
+                            <button class="btn-admin-add" id="btn-salva-articolo" onclick="aggiungiOAggiornaProdottoAlListinoMenu()">Salva</button>
+                            <button class="btn-admin-add" id="btn-annulla-articolo" onclick="annullaStatoModifica()" style="background:var(--border); color:var(--text-main); display:none;">Annulla</button>
+                        </div>
+                        
+                        <div class="scroll-table">
+                            <table class="tabella-base">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 80px;">Ord.</th>
+                                        <th>Articolo</th>
+                                        <th>Categoria</th>
+                                        <th>Prezzo</th>
+                                        <th>Stato</th>
+                                        <th style="text-align: right;">Azioni</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-controllo-menu"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="blocco-destro">
+                    <div class="sezione-blocco">
+                        <h2 class="titolo-sezione">Sistema & Backup</h2>
+                        <div class="backup-block">
+                            <div>
+                                <span style="font-size: 0.85rem; font-weight:600; display:block;">Salvataggio Sicuro</span>
+                                <span style="font-size: 0.75rem; color:var(--text-muted);">Esporta o importa il database JSON</span>
+                            </div>
+                            <div style="display:flex; gap:0.5rem;">
+                                <button class="btn-mini-azione" onclick="esportaDatabaseCompleto()" style="font-weight:700;">📥 Export</button>
+                                <label class="btn-mini-azione" style="cursor:pointer; margin:0; font-weight:700;">
+                                    📤 Import
+                                    <input type="file" id="file-import" accept=".json" style="display:none;" onchange="importaDatabaseCompleto(event)">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sezione-blocco">
+                        <h2 class="titolo-sezione">Registro Scontrini (Oggi)</h2>
+                        <div id="lista-ricevute-storico"></div>
+                    </div>
+
+                    <div class="sezione-blocco">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h2 class="titolo-sezione" style="margin-bottom: 0;">Storico Chiusure Passate</h2>
+                            <button class="btn-mini-azione btn-mini-elimina" onclick="apriModalAzzeraStorico()" style="font-weight:700;">🗑️ Svuota Storico</button>
+                        </div>
+                        <div id="lista-chiusure-storico"></div>
                     </div>
                 </div>
 
-                <div class="sezione-blocco blocco-destro">
-                    <h2 class="titolo-sezione" style="color: var(--accent);">📋 Storico Ricevute Emesse</h2>
-                    <div id="lista-ricevute-storico" style="max-height: 750px; overflow-y: auto; padding-right: 5px;"></div>
-                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="toast-container"></div>
+
+    <div class="modal-overlay" id="modal-nota">
+        <div class="modal-box">
+            <h3>Varianti & Note</h3>
+            <p>Inserisci specifiche per l'articolo selezionato.</p>
+            <input type="text" id="input-modal-nota" placeholder="Es: Senza ghiaccio, Ben cotto..." autocomplete="off">
+            <div class="modal-actions">
+                <button class="btn-modal cancel" onclick="chiudiModalNota()">Annulla</button>
+                <button class="btn-modal confirm" onclick="salvaModalNota()">Applica Nota</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-resto">
+        <div class="modal-box">
+            <h3>Calcolo Resto</h3>
+            <div style="margin-bottom: 1.25rem;">
+                <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:700; margin-bottom:1rem;">
+                    <span>Totale da Pagare:</span>
+                    <span id="resto-totale-comanda">0,00 €</span>
+                </div>
+                <input type="number" id="input-contante" placeholder="Contante ricevuto (€) - Vuoto per importo esatto" step="0.01" oninput="calcolaResto()" autocomplete="off">
+                <div style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:800; margin-top:0.5rem;">
+                    <span>Resto:</span>
+                    <span id="resto-calcolato" style="color:var(--text-muted);">0,00 € (Contati)</span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal cancel" onclick="chiudiModalResto()">Annulla</button>
+                <button class="btn-modal confirm" id="btn-conferma-resto" onclick="confermaPagamentoContanti()">Conferma Incasso</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-azzera">
+        <div class="modal-box">
+            <h3 style="color: var(--danger);">Chiusura Giornaliera</h3>
+            <p>Sei sicuro di voler chiudere la giornata? I dati attuali verranno salvati nello Storico Chiusure e la cassa verrà azzerata per il nuovo turno.</p>
+            <div class="modal-actions">
+                <button class="btn-modal cancel" onclick="chiudiModalAzzera()">Annulla</button>
+                <button class="btn-modal confirm" style="background: var(--danger); color: white;" onclick="azzeraTuttoIlSistema()">Conferma Chiusura</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-azzera-storico">
+        <div class="modal-box">
+            <h3 style="color: var(--danger);">Svuota Storico Chiusure</h3>
+            <p>Attenzione: sei sicuro di voler cancellare in modo permanente tutto lo storico delle chiusure passate? L'operazione è irreversibile.</p>
+            <div class="modal-actions">
+                <button class="btn-modal cancel" onclick="chiudiModalAzzeraStorico()">Annulla</button>
+                <button class="btn-modal confirm" style="background: var(--danger); color: white;" onclick="azzeraStoricoChiusure()">Svuota Storico</button>
             </div>
         </div>
     </div>
@@ -321,21 +515,136 @@
     <div id="blocco-stampa"></div>
 
     <script>
+        // Gestione Tema Scuro
+        let isDarkMode = localStorage.getItem('st_dark_mode') === 'true';
+        if (isDarkMode) document.body.classList.add('dark-mode');
+        aggiornaIconaTema();
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            localStorage.setItem('st_dark_mode', isDarkMode);
+            aggiornaIconaTema();
+        }
+        function aggiornaIconaTema() {
+            document.getElementById('theme-toggle').innerText = isDarkMode ? '☀️' : '🌙';
+        }
+
+        // Gestione Formato di Stampa Predefinito
+        let formatoStampa = localStorage.getItem('st_formato_stampa') || '80MM';
+        aggiornaInterfacciaFormatoStampa();
+
+        function setPrintFormat(formato) {
+            formatoStampa = formato;
+            localStorage.setItem('st_formato_stampa', formato);
+            aggiornaInterfacciaFormatoStampa();
+            showToast("Formato stampa impostato su: " + (formato === 'A4' ? 'A4 Standard' : 'Termica 80mm'), "success");
+        }
+
+        function aggiornaInterfacciaFormatoStampa() {
+            const btnA4 = document.getElementById('print-a4-toggle');
+            const btn80 = document.getElementById('print-80mm-toggle');
+            if(!btnA4 || !btn80) return;
+            
+            if (formatoStampa === 'A4') {
+                btnA4.classList.add('active-format');
+                btn80.classList.remove('active-format');
+                document.body.classList.add('format-print-a4');
+                document.body.classList.remove('format-print-80mm');
+            } else {
+                btn80.classList.add('active-format');
+                btnA4.classList.remove('active-format');
+                document.body.classList.add('format-print-80mm');
+                document.body.classList.remove('format-print-a4');
+            }
+        }
+
+        // SCORCIATOIE DA TASTIERA
+        window.addEventListener('keydown', (e) => {
+            const activeTag = document.activeElement.tagName;
+            const isTyping = activeTag === 'INPUT' || activeTag === 'TEXTAREA';
+
+            if (e.key === 'F1') { e.preventDefault(); cambiaFinestra('CASSA'); }
+            if (e.key === 'F2') { e.preventDefault(); cambiaFinestra('ARCHIVIO'); }
+            
+            if (e.key === ' ' && document.getElementById('pane-cassa').classList.contains('active') && comandaAttuale.length > 0 && document.activeElement.id !== 'num-tavolo' && document.activeElement.id !== 'ricerca-banco') {
+                e.preventDefault();
+                apriModalResto();
+            }
+
+            if (e.key === 'Enter' && document.activeElement.id === 'ricerca-banco') {
+                e.preventDefault();
+                const primeCard = document.querySelector('.card-prodotto');
+                if (primeCard) primeCard.click();
+            }
+        });
+
+        // CATEGORIE E ICONE
+        const categoriePredefinite = ["piadine", "panini", "piatti", "bevande", "caffetteria", "cocktail"];
+        const paletteColori = ["#f59e0b", "#3b82f6", "#10b981", "#ec4899", "#8b5cf6", "#6366f1", "#14b8a6", "#ef4444"];
+        
+        function getEmojiPerCategoria(cat) {
+            const m = { 'piadine':'🥙', 'panini':'🍔', 'piatti':'🍝', 'bevande':'🥤', 'caffetteria':'☕', 'cocktail':'🍹' };
+            return m[cat.toLowerCase()] || '🍽️';
+        }
+
         const menuPredefinito = [
-            { id: 1, categoria: "ALIMENTI", nome: "Primo del Giorno", prezzo: 9.00, attivo: true },
-            { id: 2, categoria: "ALIMENTI", nome: "Grigliata Mista", prezzo: 15.00, attivo: true },
-            { id: 3, categoria: "ALIMENTI", nome: "Hamburger & Patatine", prezzo: 11.50, attivo: true },
-            { id: 4, categoria: "BEVANDE", nome: "Acqua Minerale 1L", prezzo: 2.00, attivo: true },
-            { id: 5, categoria: "BEVANDE", nome: "Birra alla Spina", prezzo: 4.50, attivo: true },
-            { id: 6, categoria: "BEVANDE", nome: "Caffè / Amaro", prezzo: 1.50, attivo: true }
+            { id: 1, categoria: "piadine", nome: "Piadina Crudo e Squacquerone", prezzo: 6.50, attivo: true },
+            { id: 2, categoria: "piadine", nome: "Piadina Cotto e Fontina", prezzo: 6.00, attivo: true },
+            { id: 3, categoria: "panini", nome: "Club Sandwich", prezzo: 8.00, attivo: true },
+            { id: 4, categoria: "panini", nome: "Cheeseburger", prezzo: 7.50, attivo: true },
+            { id: 5, categoria: "piatti", nome: "Cotoletta con Patatine", prezzo: 10.00, attivo: true },
+            { id: 6, categoria: "piatti", nome: "Insalatona Mixed", prezzo: 8.50, attivo: true },
+            { id: 7, categoria: "bevande", nome: "Acqua Naturale 0.5L", prezzo: 1.50, attivo: true },
+            { id: 8, categoria: "bevande", nome: "Coca Cola in Lattina", prezzo: 3.00, attivo: true },
+            { id: 9, categoria: "caffetteria", nome: "Caffè Espresso", prezzo: 1.20, attivo: true },
+            { id: 10, categoria: "caffetteria", nome: "Cappuccino", prezzo: 1.80, attivo: true },
+            { id: 11, categoria: "cocktail", nome: "Spritz Aperol", prezzo: 5.00, attivo: true },
+            { id: 12, categoria: "cocktail", nome: "Gin Tonic", prezzo: 7.00, attivo: true }
         ];
 
-        let databaseMenu = JSON.parse(localStorage.getItem('st_menu_componibile')) || menuPredefinito;
+        let elencoCategorie = JSON.parse(localStorage.getItem('st_categorie_v7')) || categoriePredefinite;
+        let databaseMenu = JSON.parse(localStorage.getItem('st_menu_v7')) || menuPredefinito;
+        let storicovendites = JSON.parse(localStorage.getItem('st_vendite_v7')) || {};
+        let archivioRicevute = JSON.parse(localStorage.getItem('st_ricevute_log_v7')) || [];
+        let storicoChiusure = JSON.parse(localStorage.getItem('st_chiusure_storico_v7')) || []; 
+        let contatoreRicevute = parseInt(localStorage.getItem('st_contatore_v7')) || 1;
+        
         let comandaAttuale = [];
-        let storicovendite = JSON.parse(localStorage.getItem('st_prodotti_v3_split')) || {};
-        let archivioRicevute = JSON.parse(localStorage.getItem('st_ricevute_v3_split')) || [];
-        let contatoreRicevute = parseInt(localStorage.getItem('st_contatore_v3_split')) || 1;
+        
         let idArticoloInModifica = null;
+        let vecchioNomeCatInModifica = null;
+        let indexNotaModifica = null;
+        let categoriaSelezionataBanco = "TUTTE";
+        let termineRicercaBanco = "";
+
+        const formattaEuro = (val) => new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(val);
+        function hexToRgba(hex, alpha) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+        function ottieniColoreCategoria(nomeCat) {
+            const idx = elencoCategorie.indexOf(nomeCat);
+            return idx === -1 ? "#94a3b8" : paletteColori[idx % paletteColori.length];
+        }
+
+        setInterval(() => {
+            const ora = new Date();
+            const dataOraEl = document.getElementById('data-ora');
+            if(dataOraEl) dataOraEl.innerText = ora.toLocaleDateString('it-IT') + ' ' + ora.toLocaleTimeString('it-IT');
+        }, 1000);
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerText = message;
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('fade-out'), 2200);
+            setTimeout(() => toast.remove(), 2400);
+        }
 
         function cambiaFinestra(nomeFinestra) {
             document.querySelectorAll('.window-pane').forEach(p => p.classList.remove('active'));
@@ -344,427 +653,711 @@
             if (nomeFinestra === 'CASSA') {
                 document.getElementById('pane-cassa').classList.add('active');
                 document.getElementById('nav-cassa').classList.add('active');
-                inizializzaPulsantiCassa();
-                annullaStatoModifica();
+                disegnaTabsCategoriaBanco();
+                inizializzaBancoVendita();
             } else {
                 document.getElementById('pane-archivio').classList.add('active');
                 document.getElementById('nav-archivio').classList.add('active');
+                aggiornaSelettoreFiltroAdmin();
                 mostraArchivioRicevute();
+                mostraStoricoChiusure();
                 aggiornaTabellaReportEListino();
+                aggiornaElencoCategorieAdmin();
+                aggiornaGrafici();
             }
         }
 
-        function inizializzaPulsantiCassa() {
-            const containerAlimenti = document.getElementById('grid-alimenti');
-            const containerBevande = document.getElementById('grid-bevande');
-            if(!containerAlimenti || !containerBevande) return;
+        function disegnaTabsCategoriaBanco() {
+            const cont = document.getElementById('contenitore-tabs-banco');
+            cont.innerHTML = '';
             
-            containerAlimenti.innerHTML = '';
-            containerBevande.innerHTML = '';
+            const btnTutte = document.createElement('button');
+            btnTutte.className = `tab-filtro ${categoriaSelezionataBanco === 'TUTTE' ? 'active' : ''}`;
+            btnTutte.innerText = "📁 Tutto";
+            btnTutte.onclick = () => { categoriaSelezionataBanco = "TUTTE"; disegnaTabsCategoriaBanco(); inizializzaBancoVendita(); };
+            cont.appendChild(btnTutte);
 
-            databaseMenu.forEach(p => {
-                if (p.attivo === undefined) p.attivo = true;
-                if (p.attivo) {
-                    const card = document.createElement('div');
-                    card.className = `card-prodotto ${p.categoria === "ALIMENTI" ? "prodotto-alimenti" : "prodotto-bevande"}`;
-                    card.onclick = () => aggiungiInComanda(p.id);
-                    card.innerHTML = `<div class="nome-prodotto">${p.nome}</div><div class="prezzo-prodotto">${p.prezzo.toFixed(2)} €</div>`;
-                    
-                    if (p.categoria === "ALIMENTI") containerAlimenti.appendChild(card);
-                    else containerBevande.appendChild(card);
-                }
+            elencoCategorie.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = `tab-filtro ${categoriaSelezionataBanco === cat ? 'active' : ''}`;
+                btn.innerHTML = `${getEmojiPerCategoria(cat)} ${cat.charAt(0).toUpperCase() + cat.slice(1)}`;
+                btn.onclick = () => { categoriaSelezionataBanco = cat; disegnaTabsCategoriaBanco(); inizializzaBancoVendita(); };
+                cont.appendChild(btn);
             });
         }
 
-        function avviaModificaProdotto(id) {
-            const producto = databaseMenu.find(p => p.id === id);
-            if (!producto) return;
-
-            document.getElementById('nuovo-nome').value = producto.nome;
-            document.getElementById('nuovo-prezzo').value = producto.prezzo;
-            document.getElementById('nuova-categoria').value = producto.categoria;
-
-            idArticoloInModifica = id;
-            const formContainer = document.getElementById('blocco-modulo-admin');
-            const btnSalva = document.getElementById('btn-salva-articolo');
-            
-            formContainer.classList.add('editing-mode');
-            btnSalva.innerText = "💾 Aggiorna Articolo";
-            btnSalva.classList.add('btn-edit-active');
-            formContainer.scrollIntoView({ behavior: 'smooth' });
+        function forzaResetCategorieNuove() {
+            localStorage.removeItem('st_categorie_v7');
+            localStorage.removeItem('st_menu_v7');
+            elencoCategorie = [...categoriePredefinite];
+            databaseMenu = [...menuPredefinito];
+            salvaDatiLocali();
+            disegnaTabsCategoriaBanco();
+            inizializzaBancoVendita();
+            if(document.getElementById('pane-archivio').classList.contains('active')) {
+                aggiornaSelettoreFiltroAdmin();
+                aggiornaTabellaReportEListino();
+                aggiornaElencoCategorieAdmin();
+            }
+            showToast("Categorie resettate ai nuovi valori!", "success");
         }
 
-        function annullaStatoModifica() {
-            idArticoloInModifica = null;
-            const formContainer = document.getElementById('blocco-modulo-admin');
-            const btnSalva = document.getElementById('btn-salva-articolo');
-            
-            if (formContainer && btnSalva) {
-                formContainer.classList.remove('editing-mode');
-                btnSalva.innerText = "Aggiungi Articolo";
-                btnSalva.classList.remove('btn-edit-active');
-                document.getElementById('nuovo-nome').value = '';
-                document.getElementById('nuovo-prezzo').value = '';
-            }
+        function impostaFiltroRicerca(testo) {
+            termineRicercaBanco = testo.toLowerCase().trim();
+            inizializzaBancoVendita();
         }
 
-        function aggiungiOAggiornaProdottoAlListinoMenu() {
-            const nomeIn = document.getElementById('nuovo-nome').value.trim();
-            const prezzoIn = parseFloat(document.getElementById('nuovo-prezzo').value);
-            const catIn = document.getElementById('nuova-categoria').value;
+        function inizializzaBancoVendita() {
+            const container = document.getElementById('contenitore-banco-categorie');
+            container.innerHTML = '';
 
-            if (nomeIn === "" || isNaN(prezzoIn) || prezzoIn <= 0) {
-                alert("Dati inseriti non validi.");
-                return;
-            }
+            const prodottiPerCategoria = {};
+            elencoCategorie.forEach(cat => prodottiPerCategoria[cat] = []);
 
-            if (idArticoloInModifica !== null) {
-                const prodotto = databaseMenu.find(p => p.id === idArticoloInModifica);
-                if (prodotto) {
-                    const vecchioNome = prodotto.nome;
-                    prodotto.nome = nomeIn;
-                    prodotto.prezzo = prezzoIn;
-                    prodotto.categoria = catIn;
-
-                    if (vecchioNome !== nomeIn && storicovendite[vecchioNome]) {
-                        storicovendite[nomeIn] = storicovendite[vecchioNome];
-                        delete storicovendite[vecchioNome];
-                        localStorage.setItem('st_prodotti_v3_split', JSON.stringify(storicovendite));
+            databaseMenu.forEach(p => {
+                if (p.attivo !== false) {
+                    let c = elencoCategorie.includes(p.categoria) ? p.categoria : "Varie";
+                    if (!prodottiPerCategoria[c]) prodottiPerCategoria[c] = [];
+                    
+                    if ((categoriaSelezionataBanco === "TUTTE" || p.categoria === categoriaSelezionataBanco) &&
+                        p.nome.toLowerCase().includes(termineRicercaBanco)) {
+                        prodottiPerCategoria[c].push(p);
                     }
                 }
-                annullaStatoModifica();
-            } else {
-                databaseMenu.push({ id: Date.now(), categoria: catIn, nome: nomeIn, prezzo: prezzoIn, attivo: true });
-                document.getElementById('nuovo-nome').value = '';
-                document.getElementById('nuovo-prezzo').value = '';
-            }
+            });
 
-            salvaConfigurazioneMenuSuBrowser();
-            aggiornaTabellaReportEListino();
-            inizializzaPulsantiCassa();
-        }
+            Object.keys(prodottiPerCategoria).forEach(cat => {
+                const lista = prodottiPerCategoria[cat];
+                if(lista.length === 0) return;
 
-        function cambiaVisibilitaProdotto(id, rendiVisibile) {
-            const prodotto = databaseMenu.find(p => p.id === id);
-            if (prodotto) {
-                prodotto.attivo = rendiVisibile;
-                if (!rendiVisibile) comandaAttuale = comandaAttuale.filter(p => p.id !== id);
-                salvaConfigurazioneMenuSuBrowser();
-                aggiornaTabellaReportEListino();
-                renderingComanda();
-            }
-        }
+                const col = ottieniColoreCategoria(cat);
+                const bgMorbido = isDarkMode ? hexToRgba(col, 0.1) : hexToRgba(col, 0.05); 
 
-        function eliminaDefinitivamenteDalMenu(id) {
-            const prodotto = databaseMenu.find(p => p.id === id);
-            if (!prodotto) return;
+                const sez = document.createElement('section');
+                sez.className = 'sezione-blocco';
+                sez.innerHTML = `<h2 class="titolo-sezione" style="color: ${col};">${cat.toUpperCase()}</h2>`;
 
-            const datiVendite = storicovendite[prodotto.nome] || { quantita: 0 };
-            if (datiVendite.quantita > 0) {
-                if (confirm(`"${prodotto.nome}" ha vendite oggi. Verrà nascosto dal listino per salvaguardare i report contabili.`)) {
-                    cambiaVisibilitaProdotto(id, false);
-                }
-                return;
-            }
+                const grid = document.createElement('div');
+                grid.className = 'grid-prodotti';
 
-            if (confirm(`Rimuovere definitivamente "${prodotto.nome}"?`)) {
-                if (idArticoloInModifica === id) annullaStatoModifica();
-                databaseMenu = databaseMenu.filter(p => p.id !== id);
-                comandaAttuale = comandaAttuale.filter(p => p.id !== id);
-                salvaConfigurazioneMenuSuBrowser();
-                aggiornaTabellaReportEListino();
-                renderingComanda();
-            }
-        }
-
-        function salvaConfigurazioneMenuSuBrowser() {
-            localStorage.setItem('st_menu_componibile', JSON.stringify(databaseMenu));
+                lista.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'card-prodotto';
+                    card.style.borderLeft = `4px solid ${col}`;
+                    card.style.backgroundColor = bgMorbido;
+                    card.onclick = () => aggiungiInComanda(p.id);
+                    card.innerHTML = `<div class="card-icon">${getEmojiPerCategoria(p.categoria)}</div><div class="nome-prodotto">${p.nome}</div><div class="prezzo-prodotto">${formattaEuro(p.prezzo)}</div>`;
+                    grid.appendChild(card);
+                });
+                sez.appendChild(grid);
+                container.appendChild(sez);
+            });
+            aggiornaInterfacciaComanda();
         }
 
         function aggiungiInComanda(id) {
-            const itemMenu = databaseMenu.find(p => p.id === id);
-            if(!itemMenu) return;
-            const giaPresente = comandaAttuale.find(item => item.id === id);
+            const prod = databaseMenu.find(p => p.id === id);
+            if (!prod) return;
 
-            if (giaPresente) giaPresente.quantita++;
-            else comandaAttuale.push({ ...itemMenu, quantita: 1, nota: "" });
+            const existing = comandaAttuale.find(i => i.id === id && !i.variazione);
+            if (existing) existing.quantita++;
+            else comandaAttuale.push({ id: prod.id, nome: prod.nome, prezzo: prod.prezzo, quantita: 1, variazione: "" });
             
-            renderingComanda();
+            aggiornaInterfacciaComanda();
+            setTimeout(() => document.getElementById('corpo-comanda').scrollTop = 9999, 50);
         }
 
-        function riduciInComanda(id) {
-            const giaPresente = comandaAttuale.find(item => item.id === id);
-            if (giaPresente) {
-                giaPresente.quantita--;
-                if (giaPresente.quantita <= 0) comandaAttuale = comandaAttuale.filter(item => item.id !== id);
+        function cambiaQuantitaItem(idx, variaz) {
+            comandaAttuale[idx].quantita += variaz;
+            if (comandaAttuale[idx].quantita <= 0) comandaAttuale.splice(idx, 1);
+            aggiornaInterfacciaComanda();
+        }
+
+        function apriModalNota(idx) {
+            indexNotaModifica = idx;
+            document.getElementById('input-modal-nota').value = comandaAttuale[idx].variazione || "";
+            document.getElementById('modal-nota').classList.add('active');
+            setTimeout(() => document.getElementById('input-modal-nota').focus(), 50);
+        }
+        function chiudiModalNota() { document.getElementById('modal-nota').classList.remove('active'); indexNotaModifica = null; }
+        function salvaModalNota() {
+            if (indexNotaModifica !== null) {
+                comandaAttuale[indexNotaModifica].variazione = document.getElementById('input-modal-nota').value.toUpperCase().trim();
+                aggiornaInterfacciaComanda();
             }
-            renderingComanda();
+            chiudiModalNota();
         }
 
-        function inserisciVariazione(id) {
-            const item = comandaAttuale.find(item => item.id === id);
-            if (item) {
-                const nuovaNota = prompt(`Nota / Modifica per ${item.nome}:`, item.nota);
-                if (nuovaNota !== null) {
-                    item.nota = nuovaNota.trim();
-                    renderingComanda();
-                }
-            }
-        }
-
-        function renderingComanda() {
+        function aggiornaInterfacciaComanda() {
             const corpo = document.getElementById('corpo-comanda');
-            const visualizzatoreTotale = document.getElementById('totale-comanda');
-            if(!corpo || !visualizzatoreTotale) return;
             corpo.innerHTML = '';
-            let totale = 0;
 
-            comandaAttuale.forEach(item => {
-                totale += item.prezzo * item.quantita;
-                const li = document.createElement('li');
-                li.className = 'item-comanda';
-                li.innerHTML = `
-                    <div class="item-riga-alta">
-                        <div class="info-articolo-nome"><strong>${item.quantita}x</strong> ${item.nome}</div>
-                        <div class="controlli-qta">
-                            <button class="btn-modifica" onclick="riduciInComanda(${item.id})">-</button>
-                            <button class="btn-modifica" onclick="aggiungiInComanda(${item.id})">+</button>
+            const netto = comandaAttuale.reduce((tot, i) => tot + (i.prezzo * i.quantita), 0);
+
+            if(comandaAttuale.length === 0) {
+                corpo.innerHTML = `<div class="comanda-vuota-stato"><span style="font-size:2rem;">🛒</span><div>Comanda Vuota</div></div>`;
+            } else {
+                comandaAttuale.forEach((item, idx) => {
+                    const li = document.createElement('li');
+                    li.className = 'item-comanda';
+                    li.innerHTML = `
+                        <div class="item-riga-alta">
+                            <div class="info-articolo-nome"><strong>${item.quantita}x</strong> ${item.nome}</div>
+                            <div style="display:flex; align-items:center; gap:0.5rem;">
+                                <span style="font-weight:700;">${formattaEuro(item.prezzo * item.quantita)}</span>
+                                <div class="controlli-qta">
+                                    <button class="btn-modifica" onclick="cambiaQuantitaItem(${idx}, -1)">-</button>
+                                    <button class="btn-modifica" onclick="cambiaQuantitaItem(${idx}, 1)">+</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="nota-variazione" onclick="inserisciVariazione(${item.id})">
-                        ${item.nota !== "" ? "📝 " + item.nota : "+ Nota / Modifica"}
-                    </div>
-                `;
-                corpo.appendChild(li);
+                        <div class="nota-variazione" onclick="apriModalNota(${idx})">${item.variazione ? `✏️ ${item.variazione}` : "+ Aggiungi Nota"}</div>
+                    `;
+                    corpo.appendChild(li);
+                });
+            }
+
+            document.getElementById('totale-comanda').innerText = formattaEuro(netto);
+
+            const bloccato = comandaAttuale.length === 0;
+            ['btn-azione-ricevuta', 'btn-azione-cucina', 'btn-azione-bar', 'btn-azione-contanti', 'btn-azione-pos', 'btn-azione-svuota'].forEach(id => {
+                document.getElementById(id).disabled = bloccato;
             });
-            visualizzatoreTotale.innerText = `${totale.toFixed(2)} €`;
-        }
-
-        function avviaStampa(tipoStampa) {
-            if (comandaAttuale.length === 0) {
-                alert(`Nessun prodotto presente in comanda.`);
-                return;
-            }
-            const tavolo = document.getElementById('num-tavolo').value.trim() || "BANCO CASSA";
-            let prodottiDaStampare = comandaAttuale;
-            
-            if (tipoStampa === "CUCINA") prodottiDaStampare = comandaAttuale.filter(i => i.categoria === "ALIMENTI");
-            if (tipoStampa === "BAR") prodottiDaStampare = comandaAttuale.filter(i => i.categoria === "BEVANDE");
-
-            if (prodottiDaStampare.length === 0) {
-                alert(`Nessun prodotto in comanda per il reparto ${tipoStampa}.`);
-                return;
-            }
-            costruisciHtmlEdEseguiStampa(tipoStampa, contatoreRicevute, tavolo, prodottiDaStampare, new Date().toLocaleString('it-IT'), "DA SALDARE");
-        }
-
-        function costruisciHtmlEdEseguiStampa(titolo, numero, tavolo, prodotti, data, tipoPagamento) {
-            const bloccoStampa = document.getElementById('blocco-stampa');
-            if(!bloccoStampa) return;
-            let intestazioneTitolo = titolo === 'CLIENTE' ? 'RICEVUTA NON FISCALE' : 'ORDINAZIONE ' + titolo;
-            
-            let htmlScontrino = `
-                <div class="stampa-titolo">${intestazioneTitolo}</div>
-                <div class="stampa-info">
-                    <strong>Conto:</strong> #${numero}<br>
-                    <strong>Destinazione:</strong> ${tavolo.toUpperCase()}<br>
-                    <strong>Data/Ora:</strong> ${data}
-                    ${titolo === 'CLIENTE' ? '<br><strong>Pagamento:</strong> ' + tipoPagamento : ''}
-                </div>
-                <table class="stampa-tabella">
-                    <thead>
-                        <tr><th>Descrizione</th><th style="text-align:right">${titolo === 'CLIENTE' ? 'Importo' : ''}</th></tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            let totaleStampa = 0;
-            prodotti.forEach(item => {
-                const subTotale = item.prezzo * item.quantita;
-                totaleStampa += subTotale;
-                htmlScontrino += `
-                    <tr>
-                        <td>
-                            <strong>${item.quantita}x</strong> ${item.nome}
-                            ${item.nota !== "" ? '<br><small style="padding-left:10px; font-style:italic;">* ' + item.nota + '</small>' : ''}
-                        </td>
-                        <td style="text-align:right">${titolo === 'CLIENTE' ? subTotale.toFixed(2) + ' €' : ''}</td>
-                    </tr>
-                `;
-            });
-
-            htmlScontrino += `</tbody></table>`;
-            if (titolo === 'CLIENTE') {
-                htmlScontrino += `<div class="stampa-totale">TOTALE: ${totaleStampa.toFixed(2)} €</div>`;
-            }
-
-            bloccoStampa.innerHTML = htmlScontrino;
-            
-            try {
-                window.print();
-            } catch (error) {
-                console.warn("Finestra di stampa bloccata. I dati verranno comunque elaborati.", error);
-            }
-        }
-
-        function chiudiEArchiviaOrdine(metodoScelto) {
-            if (comandaAttuale.length === 0) {
-                alert("Seleziona almeno un prodotto!");
-                return;
-            }
-
-            const tavolo = document.getElementById('num-tavolo').value.trim() || "BANCO CASSA";
-            const dataOraCorrente = new Date().toLocaleString('it-IT');
-            let totaleOrdine = 0;
-
-            comandaAttuale.forEach(item => {
-                totaleOrdine += item.prezzo * item.quantita;
-                if (!storicovendite[item.nome]) {
-                    storicovendite[item.nome] = { categoria: item.categoria, quantita: 0, incasso: 0 };
-                }
-                storicovendite[item.nome].quantita += item.quantita;
-                storicovendite[item.nome].incasso += item.prezzo * item.quantita;
-            });
-
-            const nuovaRicevuta = {
-                numero: contatoreRicevute,
-                tavolo: tavolo.toUpperCase(),
-                data: dataOraCorrente,
-                totale: totaleOrdine,
-                metodoPagamento: metodoScelto, 
-                prodotti: JSON.parse(JSON.stringify(comandaAttuale))
-            };
-
-            // ⛔ STAMPA RIMOSSA DA QUESTI PULSANTI COME RICHIESTO ⛔
-            // Non viene più invocata la funzione costruisciHtmlEdEseguiStampa() da qui.
-
-            // Salvataggio dei dati immediato sul browser
-            archivioRicevute.unshift(nuovaRicevuta);
-            contatoreRicevute++;
-
-            localStorage.setItem('st_prodotti_v3_split', JSON.stringify(storicovendite));
-            localStorage.setItem('st_ricevute_v3_split', JSON.stringify(archivioRicevute));
-            localStorage.setItem('st_contatore_v3_split', contatoreRicevute);
-
-            svuotaComanda();
-        }
-
-        function mostraArchivioRicevute() {
-            const container = document.getElementById('lista-ricevute-storico');
-            if(!container) return;
-            container.innerHTML = '';
-
-            if (archivioRicevute.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:3rem; font-size:0.95rem;">Nessuna operazione oggi.</p>`;
-                return;
-            }
-
-            archivioRicevute.forEach((ric) => {
-                const badgeClasse = ric.metodoPagamento === 'CONTANTI' ? 'badge-contanti' : 'badge-pos';
-                const card = document.createElement('div');
-                card.className = 'ricevuta-card-item';
-                card.innerHTML = `
-                    <div class="ricevuta-info-testo">
-                        <strong>Conto #${ric.numero}</strong> — Tavolo/Cli: ${ric.tavolo} 
-                        <span class="badge ${badgeClasse}" style="margin-left: 6px; padding: 0.2rem 0.5rem; font-size:0.65rem;">${ric.metodoPagamento}</span><br>
-                        <small style="color:var(--text-muted); font-size:0.8rem;">${ric.data}</small><br>
-                        <strong style="color:var(--primary); font-size:1.1rem;">Importo: ${ric.totale.toFixed(2)} €</strong>
-                    </div>
-                    <button class="btn-ristampa" onclick="ristampaRicevutaDalloStorico(${ric.numero})">Ristampa</button>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function ristampaRicevutaDalloStorico(numeroConto) {
-            const ric = archivioRicevute.find(r => r.numero === numeroConto);
-            if(ric) costruisciHtmlEdEseguiStampa('CLIENTE', ric.numero, ric.tavolo, ric.prodotti, ric.data, ric.metodoPagamento);
-        }
-
-        function aggiornaTabellaReportEListino() {
-            const corpoTable = document.getElementById('corpo-report-vendites');
-            const containerControlloListino = document.getElementById('lista-controllo-menu');
-            if(!corpoTable || !containerControlloListino) return;
-            
-            corpoTable.innerHTML = '';
-            containerControlloListino.innerHTML = '';
-
-            databaseMenu.forEach(p => {
-                if (p.attivo === undefined) p.attivo = true;
-                const datiSalvati = storicovendite[p.nome] || { quantita: 0, incasso: 0 };
-                
-                let btnStato = p.attivo 
-                    ? `<button class="btn-mini-azione btn-mini-nascondi" onclick="cambiaVisibilitaProdotto(${p.id}, false)">Nascondi 👁️‍qiya</button>`
-                    : `<button class="btn-mini-azione btn-mini-mostra" onclick="cambiaVisibilitaProdotto(${p.id}, true)">Mostra 👁️</button>`;
-
-                const trControllo = document.createElement('tr');
-                trControllo.innerHTML = `
-                    <td><strong>${p.nome}</strong></td>
-                    <td><span class="badge" style="background:#f1f5f9; color:var(--text-main); font-weight:700;">${p.categoria}</span></td>
-                    <td><strong>${p.prezzo.toFixed(2)} €</strong></td>
-                    <td><span class="badge ${p.attivo ? 'badge-attivo' : 'badge-nascosto'}">${p.attivo ? 'Visibile' : 'Nascosto'}</span></td>
-                    <td style="text-align: right;">
-                        <button class="btn-mini-azione btn-mini-modifica" onclick="avviaModificaProdotto(${p.id})">Modifica ✏️</button>
-                        ${btnStato}
-                        <button class="btn-mini-azione btn-mini-elimina" onclick="eliminaDefinitivamenteDalMenu(${p.id})">Elimina 🗑️</button>
-                    </td>
-                `;
-                containerControlloListino.appendChild(trControllo);
-
-                const trReport = document.createElement('tr');
-                if (!p.attivo) trReport.style.background = '#f8fafc';
-                trReport.innerHTML = `
-                    <td><strong>${p.nome}</strong> ${p.attivo ? '' : '<span style="color:var(--text-light); font-size:0.8rem;">(Nascosto)</span>'}</td>
-                    <td><span class="badge" style="background:transparent; padding:0; color:var(--text-muted); font-weight:600;">${p.categoria}</span></td>
-                    <td><strong>${datiSalvati.quantita}</strong> pz</td>
-                    <td><strong style="color:#047857">${datiSalvati.incasso.toFixed(2)} €</strong></td>
-                `;
-                corpoTable.appendChild(trReport);
-            });
-
-            let sommaContanti = 0;
-            let sommaPos = 0;
-            
-            archivioRicevute.forEach(r => {
-                if (r.metodoPagamento === 'CONTANTI') sommaContanti += r.totale;
-                else if (r.metodoPagamento === 'POS') sommaPos += r.totale;
-            });
-
-            document.getElementById('fin-contanti').innerText = `${sommaContanti.toFixed(2)} €`;
-            document.getElementById('fin-pos').innerText = `${sommaPos.toFixed(2)} €`;
-            document.getElementById('fin-totale-generale').innerText = `${(sommaContanti + sommaPos).toFixed(2)} €`;
-        }
-
-        function azzeraTuttoIlSistema() {
-            if (confirm("Sei sicuro di voler azzerare l'incasso e le ricevute odierne?")) {
-                storicovendite = {};
-                archivioRicevute = [];
-                contatoreRicevute = 1;
-                annullaStatoModifica();
-                localStorage.removeItem('st_prodotti_v3_split');
-                localStorage.removeItem('st_ricevute_v3_split');
-                localStorage.removeItem('st_contatore_v3_split');
-                mostraArchivioRicevute();
-                aggiornaTabellaReportEListino();
-            }
         }
 
         function svuotaComanda() {
             comandaAttuale = [];
-            const inputTavolo = document.getElementById('num-tavolo');
-            if(inputTavolo) inputTavolo.value = '';
-            renderingComanda();
+            document.getElementById('num-tavolo').value = '';
+            aggiornaInterfacciaComanda();
+            showToast("Comanda archiviata.");
         }
 
-        function impostaOra() {
-            const el = document.getElementById('data-ora');
-            if(el) el.innerText = new Date().toLocaleString('it-IT', { dateStyle: 'medium', timeStyle: 'medium' });
+        function apriModalResto() {
+            const netto = comandaAttuale.reduce((tot, i) => tot + (i.prezzo * i.quantita), 0);
+            document.getElementById('resto-totale-comanda').innerText = formattaEuro(netto);
+            document.getElementById('input-contante').value = '';
+            
+            document.getElementById('resto-calcolato').innerText = formattaEuro(0) + " (Contati)";
+            document.getElementById('resto-calcolato').style.color = 'var(--text-muted)';
+            document.getElementById('btn-conferma-resto').disabled = false;
+            
+            document.getElementById('modal-resto').classList.add('active');
+            setTimeout(() => document.getElementById('input-contante').focus(), 50);
+        }
+
+        function chiudiModalResto() {
+            document.getElementById('modal-resto').classList.remove('active');
+        }
+
+        function calcolaResto() {
+            const netto = comandaAttuale.reduce((tot, i) => tot + (i.prezzo * i.quantita), 0);
+            const inputVal = document.getElementById('input-contante').value;
+            const restoEl = document.getElementById('resto-calcolato');
+            const btnConferma = document.getElementById('btn-conferma-resto');
+            
+            if (inputVal === '') {
+                restoEl.innerText = formattaEuro(0) + " (Contati)";
+                restoEl.style.color = 'var(--text-muted)';
+                btnConferma.disabled = false;
+                return;
+            }
+
+            const ricevuto = parseFloat(inputVal) || 0;
+            const resto = ricevuto - netto;
+            
+            if (ricevuto >= netto && netto > 0) {
+                restoEl.innerText = formattaEuro(resto);
+                restoEl.style.color = 'var(--success)';
+                btnConferma.disabled = false;
+            } else {
+                restoEl.innerText = formattaEuro(0);
+                restoEl.style.color = 'var(--danger)';
+                btnConferma.disabled = true;
+            }
+        }
+
+        function confermaPagamentoContanti() {
+            chiudiModalResto();
+            chiudiEArchiviaOrdine('CONTANTI');
+        }
+
+        function chiudiEArchiviaOrdine(metodo) {
+            const tavolo = document.getElementById('num-tavolo').value.trim();
+            const netto = comandaAttuale.reduce((tot, i) => tot + (i.prezzo * i.quantita), 0);
+
+            comandaAttuale.forEach(item => {
+                const catItem = databaseMenu.find(m => m.id === item.id);
+                const cat = catItem ? catItem.categoria : "Varie";
+                if (!storicovendites[item.nome]) storicovendites[item.nome] = { qta: 0, incasso: 0, categoria: cat };
+                storicovendites[item.nome].qta += item.quantita;
+                storicovendites[item.nome].incasso += (item.prezzo * item.quantita);
+            });
+
+            const ricevuta = {
+                id: contatoreRicevute++, tavolo, totale: netto,
+                metodo, data: new Date().toISOString(), articoli: [...comandaAttuale]
+            };
+
+            archivioRicevute.unshift(ricevuta);
+            salvaDatiLocali();
+            svuotaComanda();
+            showToast(`Incassato ${formattaEuro(netto)} con ${metodo}.`, "success");
+        }
+
+        // RICHIAMO E STORNO SCONTRINI
+        function richiamaRicevuta(id) {
+            if (comandaAttuale.length > 0) {
+                showToast("Svuota la comanda attuale prima di richiamare uno scontrino!", "error");
+                return;
+            }
+
+            const idx = archivioRicevute.findIndex(r => r.id === id);
+            if (idx === -1) return;
+
+            const ricevuta = archivioRicevute[idx];
+
+            ricevuta.articoli.forEach(item => {
+                if (storicovendites[item.nome]) {
+                    storicovendites[item.nome].qta -= item.quantita;
+                    storicovendites[item.nome].incasso -= (item.prezzo * item.quantita);
+                    if (storicovendites[item.nome].qta <= 0) delete storicovendites[item.nome];
+                }
+            });
+
+            comandaAttuale = [...ricevuta.articoli];
+            document.getElementById('num-tavolo').value = ricevuta.tavolo || '';
+            
+            archivioRicevute.splice(idx, 1);
+            salvaDatiLocali();
+            
+            mostraArchivioRicevute();
+            aggiornaTabellaReportEListino();
+            aggiornaGrafici();
+            
+            cambiaFinestra('CASSA');
+            aggiornaInterfacciaComanda();
+            
+            showToast(`Scontrino #${id} stornato. Modifica la comanda in cassa.`);
+        }
+
+        // NUOVA FUNZIONE: Elimina completamente lo scontrino senza riportarlo in cassa
+        function stornaDefinitivo(id) {
+            if(!confirm("Sicuro di voler eliminare definitivamente questo scontrino? L'incasso verrà sottratto dal totale di oggi.")) return;
+            const idx = archivioRicevute.findIndex(r => r.id === id);
+            if (idx === -1) return;
+
+            const ricevuta = archivioRicevute[idx];
+
+            ricevuta.articoli.forEach(item => {
+                if (storicovendites[item.nome]) {
+                    storicovendites[item.nome].qta -= item.quantita;
+                    storicovendites[item.nome].incasso -= (item.prezzo * item.quantita);
+                    if (storicovendites[item.nome].qta <= 0) delete storicovendites[item.nome];
+                }
+            });
+
+            archivioRicevute.splice(idx, 1);
+            salvaDatiLocali();
+            
+            mostraArchivioRicevute();
+            aggiornaTabellaReportEListino();
+            aggiornaGrafici();
+            
+            showToast(`Scontrino #${id} eliminato in modo definitivo.`, "success");
+        }
+
+        function ristampaRicevuta(id) {
+            const r = archivioRicevute.find(x => x.id === id);
+            if(!r) return;
+            
+            const blocco = document.getElementById('blocco-stampa');
+            let html = `<div class="stampa-titolo">COPIA RICEVUTA</div>`;
+            html += `<div class="stampa-subtitolo">Ricevuta non valida ai fini fiscali - Copia Ristampa #${r.id}</div>`;
+            html += `<div style="margin-bottom: 12px; font-size: 10pt;">${r.tavolo ? `<b>TAVOLO:</b> ${r.tavolo}<br>` : ''}<b>Data originale:</b> ${new Date(r.data).toLocaleString('it-IT')}</div>`;
+            html += `<table class="stampa-tabella">`;
+
+            r.articoli.forEach(i => {
+                html += `<tr><td><b>${i.quantita}x</b> ${i.nome}${i.variazione ? `<br><small>* ${i.variazione}</small>` : ''}</td>
+                         <td style="text-align:right;">${formattaEuro(i.prezzo * i.quantita)}</td></tr>`;
+            });
+            html += `</table>`;
+            html += `<div class="stampa-totale">TOTALE PAGATO: ${formattaEuro(r.totale)}</div>`;
+            html += `<div style="text-align:right; font-size: 9pt; margin-top:4px;">Metodo: ${r.metodo}</div>`;
+            
+            blocco.innerHTML = html;
+            window.print();
+        }
+
+        function avviaStampa(reparto) {
+            const blocco = document.getElementById('blocco-stampa');
+            const tavolo = document.getElementById('num-tavolo').value.trim();
+            const netto = comandaAttuale.reduce((tot, i) => tot + (i.prezzo * i.quantita), 0);
+            
+            let html = `<div class="stampa-titolo">${reparto === 'CLIENTE' ? 'RICEVUTA' : 'REPARTO '+reparto}</div>`;
+            html += `<div class="stampa-subtitolo">${reparto === 'CLIENTE' ? 'Ricevuta non valida ai fini fiscali' : 'Comanda Interna'}</div>`;
+            html += `<div style="margin-bottom: 12px; font-size: 10pt;">${tavolo ? `<b>TAVOLO:</b> ${tavolo}<br>` : ''}<b>Data:</b> ${new Date().toLocaleString('it-IT')}</div>`;
+            html += `<table class="stampa-tabella">`;
+
+            let contaArticoliStampati = 0;
+
+            comandaAttuale.forEach(i => {
+                const prodMenu = databaseMenu.find(m => m.id === i.id) || {};
+                const cat = (prodMenu.categoria || "").toLowerCase().trim();
+                
+                let ok = false;
+                if (reparto === 'CLIENTE') {
+                    ok = true;
+                } else if (reparto === 'BAR') {
+                    if (cat === 'bevande' || cat === 'caffetteria' || cat === 'cocktail') ok = true;
+                } else if (reparto === 'CUCINA') {
+                    if (cat === 'piadine' || cat === 'panini' || cat === 'piatti') ok = true;
+                }
+
+                if (ok) {
+                    contaArticoliStampati++;
+                    html += `<tr><td><b>${i.quantita}x</b> ${i.nome}${i.variazione ? `<br><small>* ${i.variazione}</small>` : ''}</td>
+                             <td style="text-align:right;">${reparto === 'CLIENTE' ? formattaEuro(i.prezzo * i.quantita) : ''}</td></tr>`;
+                }
+            });
+            html += `</table>`;
+
+            if (reparto === 'CLIENTE') {
+                html += `<div class="stampa-totale">TOTALE: ${formattaEuro(netto)}</div>`;
+            }
+
+            if (reparto !== 'CLIENTE' && contaArticoliStampati === 0) {
+                showToast(`Nessun articolo in comanda per il reparto ${reparto}.`, "error");
+                return;
+            }
+
+            blocco.innerHTML = html;
+            window.print();
+        }
+
+        /* --- Backup & Restore & Esportazione --- */
+        function esportaDatabaseCompleto() {
+            const data = {
+                categorie: elencoCategorie,
+                menu: databaseMenu,
+                vendite: storicovendites,
+                ricevute: archivioRicevute,
+                chiusure: storicoChiusure,
+                contatore: contatoreRicevute,
+                dataBackup: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = `SmartCassa_Backup_${new Date().toISOString().split('T')[0]}.json`;
+            a.click(); URL.revokeObjectURL(url);
+            showToast("Backup scaricato con successo.");
+        }
+
+        function importaDatabaseCompleto(event) {
+            const file = event.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if(data.categorie && data.menu) {
+                        elencoCategorie = data.categorie;
+                        databaseMenu = data.menu;
+                        storicovendites = data.vendite || {};
+                        archivioRicevute = data.ricevute || [];
+                        storicoChiusure = data.chiusure || [];
+                        contatoreRicevute = data.contatore || 1;
+                        salvaDatiLocali();
+                        cambiaFinestra('ARCHIVIO');
+                        showToast("Dati ripristinati correttamente dal backup.");
+                    } else {
+                        showToast("File di backup non valido.", "error");
+                    }
+                } catch(err) { showToast("Errore lettura file.", "error"); }
+            };
+            reader.readAsText(file);
+            event.target.value = ''; 
+        }
+
+        function esportaReportCSV() {
+            let csv = "Categoria;Articolo;Quantita;Incasso (€)\n";
+            let totQta = 0;
+            let totIncasso = 0;
+
+            const righe = Object.entries(storicovendites).map(([n, d]) => ({
+                nome: n,
+                cat: (d.categoria || "Altro").toUpperCase(),
+                qta: d.qta,
+                incasso: d.incasso
+            }));
+
+            righe.sort((a, b) => a.cat.localeCompare(b.cat));
+
+            righe.forEach(r => {
+                totQta += r.qta;
+                totIncasso += r.incasso;
+                csv += `"${r.cat}";"${r.nome}";${r.qta};"${r.incasso.toFixed(2).replace('.', ',')}"\n`;
+            });
+
+            csv += `\n"TOTALE GENERALE";"";${totQta};"${totIncasso.toFixed(2).replace('.', ',')}"\n\n`;
+
+            csv += `\n"--- TOP 10 PRODOTTI PIU' VENDUTI ---"\n`;
+            csv += `"Posizione";"Articolo";"Quantita";"Incasso (€)"\n`;
+            
+            const top10 = [...righe].sort((a, b) => b.qta - a.qta).slice(0, 10);
+            top10.forEach((r, idx) => {
+                csv += `"${idx + 1}";"${r.nome}";${r.qta};"${r.incasso.toFixed(2).replace('.', ',')}"\n`;
+            });
+
+            const bom = "\uFEFF";
+            const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; 
+            a.download = `Report_Vendite_${new Date().toISOString().split('T')[0]}.csv`; 
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        /* --- STATISTICHE VISIVE (HTML/CSS) --- */
+        function aggiornaGrafici() {
+            const righe = Object.entries(storicovendites).map(([n, d]) => ({nome: n, qta: d.qta}));
+            righe.sort((a, b) => b.qta - a.qta);
+            const top5 = righe.slice(0, 5);
+            let htmlTop = '';
+            let maxQ = top5.length > 0 ? top5[0].qta : 1;
+            
+            top5.forEach(r => {
+                let perc = (r.qta / maxQ) * 100;
+                htmlTop += `<div style="margin-bottom: 8px; font-size:0.85rem; font-weight:600;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+                        <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${r.nome}</span>
+                        <span>${r.qta} pz</span>
+                    </div>
+                    <div style="background:var(--input-bg); border:1px solid var(--border); border-radius:4px; height:10px; width:100%; overflow:hidden;">
+                        <div style="background:var(--primary); width:${perc}%; height:100%; transition: width 0.5s ease;"></div>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('grafico-top5').innerHTML = htmlTop || '<p style="font-size:0.85rem; color:var(--text-muted)">Nessun dato di vendita oggi.</p>';
+
+            const ore = new Array(24).fill(0);
+            let maxIncasso = 0;
+            archivioRicevute.forEach(r => {
+                let h = new Date(r.data).getHours();
+                ore[h] += r.totale;
+                if(ore[h] > maxIncasso) maxIncasso = ore[h];
+            });
+            
+            let htmlOre = '<div style="display:flex; align-items:flex-end; gap:2px; height:120px; width:100%; padding-top:10px;">';
+            for(let i=7; i<24; i++) {
+                let p = maxIncasso > 0 ? (ore[i] / maxIncasso) * 100 : 0;
+                let activeColor = ore[i] > 0 ? 'var(--info)' : 'var(--border)';
+                htmlOre += `<div style="flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center;" title="Ore ${i}:00 = ${formattaEuro(ore[i])}">
+                    <div style="width:80%; background:${activeColor}; height:${p}%; border-radius:3px 3px 0 0; min-height:${p>0?4:1}px; transition: height 0.5s ease;"></div>
+                    <span style="font-size:0.65rem; color:var(--text-muted); margin-top:4px; font-weight:700;">${i}</span>
+                </div>`;
+            }
+            htmlOre += '</div>';
+            document.getElementById('grafico-ore').innerHTML = htmlOre;
+        }
+
+        /* --- GESTIONE DATI LOCALI E CHIUSURE --- */
+        function salvaDatiLocali() {
+            localStorage.setItem('st_categorie_v7', JSON.stringify(elencoCategorie));
+            localStorage.setItem('st_menu_v7', JSON.stringify(databaseMenu));
+            localStorage.setItem('st_vendite_v7', JSON.stringify(storicovendites));
+            localStorage.setItem('st_ricevute_log_v7', JSON.stringify(archivioRicevute));
+            localStorage.setItem('st_chiusure_storico_v7', JSON.stringify(storicoChiusure));
+            localStorage.setItem('st_contatore_v7', contatoreRicevute.toString());
+        }
+
+        function aggiornaElencoCategorieAdmin() { 
+            const tb = document.getElementById('lista-controllo-categorie');
+            const sel = document.getElementById('nuova-categoria');
+            if(!tb || !sel) return;
+            tb.innerHTML = ''; sel.innerHTML = '';
+            elencoCategorie.forEach((c, i) => {
+                const visualizzazioneNome = c.charAt(0).toUpperCase() + c.slice(1);
+                tb.innerHTML += `<tr><td><button class="btn-mini-azione" onclick="spostaCategoria(${i},-1)">▲</button><button class="btn-mini-azione" onclick="spostaCategoria(${i},1)">▼</button></td><td><b>${visualizzazioneNome}</b></td><td style="text-align:right;"><button class="btn-mini-azione btn-mini-modifica" onclick="avviaModificaCategoria('${c}')">Modifica</button></td></tr>`;
+                sel.innerHTML += `<option value="${c}">${visualizzazioneNome}</option>`;
+            });
+        }
+        function spostaCategoria(idx, dir) {
+            if(idx+dir < 0 || idx+dir >= elencoCategorie.length) return;
+            [elencoCategorie[idx], elencoCategorie[idx+dir]] = [elencoCategorie[idx+dir], elencoCategorie[idx]];
+            salvaDatiLocali(); aggiornaElencoCategorieAdmin();
         }
         
-        impostaOra();
-        setInterval(impostaOra, 1000);
-        inizializzaPulsantiCassa();
+        function aggiungiOModificaCategoria() {
+            const v = document.getElementById('nuova-cat-nome').value.toLowerCase().trim();
+            if(!v) return;
+            if(vecchioNomeCatInModifica) {
+                const vecchioIdx = elencoCategorie.indexOf(vecchioNomeCatInModifica);
+                if (vecchioIdx !== -1) elencoCategorie[vecchioIdx] = v;
+                databaseMenu.forEach(p => { if(p.categoria === vecchioNomeCatInModifica) p.categoria = v; });
+            } else { 
+                if(elencoCategorie.includes(v)) return showToast("La categoria esiste già", "error"); 
+                elencoCategorie.push(v); 
+            }
+            salvaDatiLocali(); annullaStatoModificaCat(); aggiornaElencoCategorieAdmin(); aggiornaTabellaReportEListino();
+            showToast("Categoria salvata e sincronizzata.");
+        }
+        function avviaModificaCategoria(nome) { vecchioNomeCatInModifica = nome; document.getElementById('nuova-cat-nome').value = nome; document.getElementById('btn-annulla-cat').style.display='inline-block'; }
+        function annullaStatoModificaCat() { vecchioNomeCatInModifica = null; document.getElementById('nuova-cat-nome').value=''; document.getElementById('btn-annulla-cat').style.display='none'; }
+
+        function aggiornaTabellaReportEListino() {
+            const tb = document.getElementById('lista-controllo-menu');
+            const filtroEl = document.getElementById('filtro-categoria-admin');
+            if(!tb || !filtroEl) return;
+            const filtro = filtroEl.value;
+            tb.innerHTML = '';
+            databaseMenu.forEach((p, i) => {
+                if(filtro !== 'TUTTE' && p.categoria !== filtro) return;
+                const catFormattata = p.categoria.charAt(0).toUpperCase() + p.categoria.slice(1);
+                tb.innerHTML += `<tr><td><button class="btn-mini-azione" onclick="spostaProdotto(${i},-1)">▲</button><button class="btn-mini-azione" onclick="spostaProdotto(${i},1)">▼</button></td><td><b>${p.nome}</b></td><td>${catFormattata}</td><td>${formattaEuro(p.prezzo)}</td><td>${p.attivo!==false?'Attivo':'Nascosto'}</td><td style="text-align:right;"><button class="btn-mini-azione btn-mini-modifica" onclick="avviaModificaProdotto(${p.id})">Mod.</button><button class="btn-mini-azione" onclick="cambiaStatoAttivoProdotto(${p.id})">On/Off</button></td></tr>`;
+            });
+            
+            const trRep = document.getElementById('corpo-report-vendites');
+            trRep.innerHTML = '';
+            for(const [n, d] of Object.entries(storicovendites)) trRep.innerHTML += `<tr><td>${n}</td><td>${d.qta}</td><td>${formattaEuro(d.incasso)}</td></tr>`;
+            
+            let c=0, p=0; archivioRicevute.forEach(r => r.metodo==='CONTANTI'? c+=r.totale : p+=r.totale);
+            document.getElementById('fin-contanti').innerText = formattaEuro(c);
+            document.getElementById('fin-pos').innerText = formattaEuro(p);
+            document.getElementById('fin-totale-generale').innerText = formattaEuro(c+p);
+        }
+
+        function spostaProdotto(idx, dir) {
+            const cat = databaseMenu[idx].categoria; let target = idx + dir;
+            while(target >= 0 && target < databaseMenu.length && databaseMenu[target].categoria !== cat) target += dir;
+            if(target < 0 || target >= databaseMenu.length) return;
+            [databaseMenu[idx], databaseMenu[target]] = [databaseMenu[target], databaseMenu[idx]];
+            salvaDatiLocali(); aggiornaTabellaReportEListino();
+        }
+        function avviaModificaProdotto(id) {
+            const p = databaseMenu.find(x=>x.id===id); if(!p) return;
+            document.getElementById('nuovo-nome').value = p.nome; document.getElementById('nuovo-prezzo').value = p.prezzo;
+            document.getElementById('nuova-categoria').value = p.categoria; idArticoloInModifica = id;
+            document.getElementById('blocco-modulo-admin').classList.add('editing-mode'); document.getElementById('btn-annulla-articolo').style.display='inline-block';
+        }
+        function annullaStatoModifica() {
+            idArticoloInModifica = null; document.getElementById('nuovo-nome').value = ''; document.getElementById('nuovo-prezzo').value = '';
+            document.getElementById('blocco-modulo-admin').classList.remove('editing-mode'); document.getElementById('btn-annulla-articolo').style.display='none';
+        }
+        function aggiungiOAggiornaProdottoAlListinoMenu() {
+            const n = document.getElementById('nuovo-nome').value.trim(), p = parseFloat(document.getElementById('nuovo-prezzo').value), c = document.getElementById('nuova-categoria').value;
+            if(!n || isNaN(p) || p<0) return showToast("Campi non validi", "error");
+            if(idArticoloInModifica) { const idx = databaseMenu.findIndex(x=>x.id===idArticoloInModifica); databaseMenu[idx]={...databaseMenu[idx], nome:n, prezzo:p, categoria:c}; }
+            else { databaseMenu.push({id: databaseMenu.length? Math.max(...databaseMenu.map(x=>x.id))+1 : 1, categoria:c, nome:n, prezzo:p, attivo:true}); }
+            salvaDatiLocali(); annullaStatoModifica(); aggiornaTabellaReportEListino();
+            showToast("Articolo salvato correttamente.");
+        }
+        function cambiaStatoAttivoProdotto(id) { const p = databaseMenu.find(x=>x.id===id); if(p){ p.attivo = p.attivo===false; salvaDatiLocali(); aggiornaTabellaReportEListino(); } }
+
+        function aggiornaSelettoreFiltroAdmin() {
+            const s = document.getElementById('filtro-categoria-admin'); if(!s) return; const val = s.value; s.innerHTML = '<option value="TUTTE">Tutte</option>';
+            elencoCategorie.forEach(c => s.innerHTML += `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`); s.value = val;
+        }
+
+        function mostraArchivioRicevute() {
+            const c = document.getElementById('lista-ricevute-storico'); if(!c) return; c.innerHTML = '';
+            if(archivioRicevute.length === 0) {
+                c.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); padding:1rem;">Nessuna ricevuta in archivio per oggi.</p>';
+                return;
+            }
+            archivioRicevute.forEach(r => {
+                const d = document.createElement('div'); d.className = 'ricevuta-card-item'; 
+                d.onclick = (e) => { if(e.target.tagName !== 'BUTTON') d.classList.toggle('expanded'); };
+                
+                d.innerHTML = `<div style="display:flex;justify-content:space-between"><div><b>#${r.id}</b>${r.tavolo ? ` - ${r.tavolo}` : ''}<br><small>${new Date(r.data).toLocaleTimeString()} • ${r.metodo}</small></div><b>${formattaEuro(r.totale)}</b></div>
+                <div class="ricevuta-dettaglio">
+                    ${r.articoli.map(a=>`${a.quantita}x ${a.nome}`).join('<br>')}
+                    <div style="margin-top: 10px; display: flex; gap: 5px; justify-content: flex-end;">
+                        <button class="btn-mini-azione" onclick="ristampaRicevuta(${r.id})">🖨️ Ristampa</button>
+                        <button class="btn-mini-azione btn-mini-modifica" onclick="richiamaRicevuta(${r.id})" title="Riporta in cassa per modificare">📝 Modifica</button>
+                        <button class="btn-mini-azione btn-mini-elimina" onclick="stornaDefinitivo(${r.id})" title="Elimina definitivamente">🗑️ Elimina</button>
+                    </div>
+                </div>`;
+                c.appendChild(d);
+            });
+        }
+
+        function mostraStoricoChiusure() {
+            const c = document.getElementById('lista-chiusure-storico'); if(!c) return; c.innerHTML = '';
+            if(storicoChiusure.length === 0) {
+                c.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); padding:1rem;">Nessuna chiusura passata.</p>';
+                return;
+            }
+            storicoChiusure.forEach(r => {
+                const d = document.createElement('div'); d.className = 'ricevuta-card-item'; d.onclick = ()=>d.classList.toggle('expanded');
+                d.innerHTML = `<div style="display:flex;justify-content:space-between"><div><b>Data:</b> ${new Date(r.data).toLocaleDateString('it-IT')}<br><small>Clicca per dettagli</small></div><b>${formattaEuro(r.totale)}</b></div>
+                <div class="ricevuta-dettaglio">Contanti: <b>${formattaEuro(r.contanti)}</b><br>POS: <b>${formattaEuro(r.pos)}</b></div>`;
+                c.appendChild(d);
+            });
+        }
+
+        function confermaAzzeraTutto() { document.getElementById('modal-azzera').classList.add('active'); }
+        function chiudiModalAzzera() { document.getElementById('modal-azzera').classList.remove('active'); }
+        
+        function azzeraTuttoIlSistema() {
+            let c=0, p=0, tot=0;
+            archivioRicevute.forEach(r => {
+                tot += r.totale;
+                if(r.metodo === 'CONTANTI') c += r.totale;
+                else p += r.totale;
+            });
+            
+            if (tot > 0) {
+                storicoChiusure.unshift({
+                    data: new Date().toISOString(),
+                    totale: tot,
+                    contanti: c,
+                    pos: p
+                });
+            }
+
+            storicovendites = {}; archivioRicevute = []; contatoreRicevute = 1;
+            salvaDatiLocali(); 
+            chiudiModalAzzera(); 
+            aggiornaTabellaReportEListino(); 
+            mostraArchivioRicevute();
+            mostraStoricoChiusure();
+            aggiornaGrafici();
+            showToast("Giornata Chiusa. Dati salvati nello storico.");
+        }
+
+        // Funzioni per azzerare lo storico
+        function apriModalAzzeraStorico() { document.getElementById('modal-azzera-storico').classList.add('active'); }
+        function chiudiModalAzzeraStorico() { document.getElementById('modal-azzera-storico').classList.remove('active'); }
+        function azzeraStoricoChiusure() {
+            storicoChiusure = [];
+            salvaDatiLocali();
+            chiudiModalAzzeraStorico();
+            mostraStoricoChiusure();
+            showToast("Storico chiusure eliminato.");
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('PWA SW non registrato', err));
+            });
+        }
+
+        // Listener varianti e resto
+        document.getElementById('input-modal-nota').addEventListener('keypress', (e) => { if(e.key === 'Enter') salvaModalNota(); });
+        document.getElementById('input-contante').addEventListener('keypress', (e) => { 
+            if(e.key === 'Enter' && !document.getElementById('btn-conferma-resto').disabled) confermaPagamentoContanti(); 
+        });
+
+        window.onload = () => {
+            cambiaFinestra('CASSA');
+            aggiornaInterfacciaFormatoStampa();
+            
+            if (!elencoCategorie.includes('piadine') && !elencoCategorie.includes('cocktail')) {
+                forzaResetCategorieNuove();
+            }
+        };
     </script>
 </body>
 </html>
-
