@@ -1,13 +1,9 @@
-Cassa_24_Aggiornato.html
-Pagina
-/1
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCassa Pro - Ultimate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SmartCassa Pro - Ultimate Mobile</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,7 +71,7 @@ Pagina
 
         html { scroll-behavior: smooth; }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: -0.01em; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: -0.01em; -webkit-tap-highlight-color: transparent; }
         
         body { background-color: var(--bg-main); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background-color 0.3s, color 0.3s; }
 
@@ -118,7 +114,7 @@ Pagina
         .grid-prodotti { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
         .card-prodotto { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; background: var(--surface); cursor: pointer; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); min-height: 105px; user-select: none; position: relative; }
         .card-prodotto:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-hover); }
-        .card-prodotto:active { transform: translateY(0); }
+        .card-prodotto:active { transform: scale(0.97); background-color: var(--border); }
         
         .card-icon { font-size: 1.5rem; margin-bottom: 0.25rem; display: block; opacity: 0.9; }
         .nome-prodotto { font-weight: 700; font-size: 0.85rem; line-height: 1.3; color: var(--text-main); }
@@ -137,11 +133,11 @@ Pagina
         .info-articolo-nome { font-weight: 500; font-size: 0.85rem; color: var(--text-main); }
         .info-articolo-nome strong { color: var(--text-muted); font-weight: 700; margin-right: 0.25rem; }
         
-        .nota-variazione { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; margin-top: 0.35rem; cursor: pointer; background: var(--input-bg); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); width: fit-content; border: 1px solid var(--border); transition: all 0.1s ease; }
+        .nota-variazione { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; margin-top: 0.35rem; cursor: pointer; background: var(--input-bg); padding: 0.35rem 0.6rem; border-radius: var(--radius-sm); width: fit-content; border: 1px solid var(--border); transition: all 0.1s ease; }
         .nota-variazione:hover { background: var(--border); color: var(--text-main); }
         
-        .controlli-qta { display: flex; align-items: center; gap: 0.2rem; background: var(--border); padding: 0.2rem; border-radius: var(--radius-sm); }
-        .btn-modifica { background: var(--surface); border: none; width: 24px; height: 24px; border-radius: calc(var(--radius-sm) - 2px); cursor: pointer; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--text-main); box-shadow: var(--shadow-sm); transition: all 0.1s ease; }
+        .controlli-qta { display: flex; align-items: center; gap: 0.3rem; background: var(--border); padding: 0.25rem; border-radius: var(--radius-sm); }
+        .btn-modifica { background: var(--surface); border: none; width: 28px; height: 28px; border-radius: calc(var(--radius-sm) - 2px); cursor: pointer; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--text-main); box-shadow: var(--shadow-sm); transition: all 0.1s ease; }
         .btn-modifica:hover { background: var(--input-bg); transform: scale(1.05); }
 
         .totale-box { display: flex; flex-direction: column; padding: 1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
@@ -165,6 +161,11 @@ Pagina
         .btn-svuota { background: transparent; color: var(--danger); border: 1px solid transparent; box-shadow: none; font-size: 0.82rem; margin-top: 0.35rem; }
         .btn-svuota:hover:not(:disabled) { background: var(--danger-dim); border-color: rgba(239, 68, 68, 0.2); }
 
+        /* Mobile Sub-Nav per la Cassa */
+        .mobile-cassa-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--surface); border-top: 1px solid var(--border); z-index: 101; box-shadow: 0 -4px 12px rgba(0,0,0,0.08); }
+        .mobile-sub-btn { flex: 1; padding: 0.85rem; border: none; background: transparent; color: var(--text-muted); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; }
+        .mobile-sub-btn.active { color: var(--success); background: var(--input-bg); border-top: 3px solid var(--success); }
+
         /* Archivio */
         .archivio-full { width: 100%; display: flex; flex-direction: column; gap: 1.5rem; }
         .split-archivio { display: flex; gap: 1.5rem; flex-wrap: wrap; }
@@ -187,7 +188,7 @@ Pagina
         .card-finanziaria .titolo-f { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
         .card-finanziaria .valore-f { font-size: 1.2rem; font-weight: 700; margin-top: 0.25rem; color: var(--text-main); }
         
-        .btn-mini-azione { border: 1px solid var(--border); padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.78rem; font-weight: 600; background: var(--surface); color: var(--text-muted); transition: all 0.1s ease; margin-right: 2px; }
+        .btn-mini-azione { border: 1px solid var(--border); padding: 0.4rem 0.7rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.8rem; font-weight: 600; background: var(--surface); color: var(--text-muted); transition: all 0.1s ease; margin-right: 2px; }
         .btn-mini-azione:hover { background: var(--input-bg); color: var(--text-main); border-color: var(--border-hover); }
         .btn-mini-modifica { background: var(--input-bg); color: var(--text-main); font-weight: 700; }
         .btn-mini-elimina { background: var(--danger-dim); color: var(--danger); border-color: transparent; }
@@ -212,11 +213,11 @@ Pagina
 
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.15s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-box { background: var(--surface); padding: 1.5rem; border-radius: var(--radius-lg); width: 90%; max-width: 380px; box-shadow: var(--shadow-lg); border: 1px solid var(--border); transform: scale(0.95); transition: transform 0.15s ease; color: var(--text-main); }
+        .modal-box { background: var(--surface); padding: 1.5rem; border-radius: var(--radius-lg); width: 92%; max-width: 380px; box-shadow: var(--shadow-lg); border: 1px solid var(--border); transform: scale(0.95); transition: transform 0.15s ease; color: var(--text-main); }
         .modal-overlay.active .modal-box { transform: scale(1); }
         .modal-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
         .modal-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.4; }
-        .modal-box input { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; margin-bottom: 1.25rem; background: var(--input-bg); color: var(--text-main); }
+        .modal-box input { width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 1rem; margin-bottom: 1.25rem; background: var(--input-bg); color: var(--text-main); }
         .modal-box input:focus { border-color: var(--primary); outline: none; }
         .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
         .btn-modal { padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem; cursor: pointer; border: none; transition: all 0.1s ease; }
@@ -229,7 +230,7 @@ Pagina
         #blocco-stampa { display: none; }
         @media print {
             body, .dark-mode { background: white !important; color: black !important; }
-            header, .window-pane, #toast-container { display: none !important; }
+            header, .window-pane, #toast-container, .mobile-cassa-bar { display: none !important; }
             #blocco-stampa { display: block !important; width: 100%; margin: 0 auto; }
             .stampa-titolo { text-align: center; font-weight: bold; text-transform: uppercase; }
             .stampa-subtitolo { text-align: center; font-weight: bold; border-bottom: 1px dashed #000; padding-bottom: 6px; margin-bottom: 8px; }
@@ -246,29 +247,64 @@ Pagina
             body.format-print-a4 .stampa-tabella td { padding: 4px 0; }
         }
 
+        /* --- RESPONSIVITÀ PER SMARTPHONE E TABLET --- */
         @media (max-width: 1024px) {
-            .window-pane.active { flex-direction: column; }
-            .comanda-container { max-width: 100%; position: static; max-height: none; }
+            .window-pane.active { flex-direction: column; gap: 1rem; }
+            
+            /* Attivazione della bottom bar per switchare Menu e Carrello */
+            .mobile-cassa-bar { display: flex; }
+            
+            #pane-cassa.active { padding-bottom: 4.5rem; }
+            
+            /* Nascondi o mostra in base allo stato dello switch mobile */
+            #pane-cassa.mobile-view-comanda .menu-container { display: none; }
+            #pane-cassa.mobile-view-comanda .comanda-container { display: flex; max-width: 100%; position: static; max-height: none; box-shadow: var(--shadow-sm); }
+            
+            #pane-cassa:not(.mobile-view-comanda) .menu-container { display: flex; }
+            #pane-cassa:not(.mobile-view-comanda) .comanda-container { display: none; }
+            
+            .split-archivio { flex-direction: column; }
+            .blocco-sinistro, .blocco-destro { width: 100%; min-width: 100%; }
+            .grid-stats-archivio { grid-template-columns: 1fr !important; gap: 1rem !important; }
         }
+        
         @media (max-width: 600px) {
-            header { padding: 0.75rem 1rem; }
-            .nav-buttons { width: 100%; }
-            .btn-nav { flex: 1; justify-content: center; }
-            .grid-prodotti { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-            .window-pane { padding: 1rem; }
+            header { padding: 0.5rem 0.75rem; gap: 0.5rem; }
+            .brand h1 { font-size: 1rem; }
+            .nav-buttons { width: 100%; order: 3; }
+            .btn-nav { flex: 1; justify-content: center; padding: 0.5rem; font-size: 0.8rem; }
+            .header-tools { width: 100%; justify-content: space-between; }
+            #data-ora { margin-left: 0; font-size: 0.75rem; padding: 0.3rem 0.6rem; }
+            
+            .grid-prodotti { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 0.5rem; }
+            .card-prodotto { min-height: 95px; padding: 0.75rem; }
+            .nome-prodotto { font-size: 0.8rem; }
+            .prezzo-prodotto { font-size: 0.9rem; padding-top: 0.5rem; }
+            
+            .window-pane { padding: 0.75rem; }
+            .sezione-blocco { padding: 1rem; border-radius: var(--radius-md); }
+            
+            /* Ingrandimento touch target pulsanti quantità */
+            .btn-modifica { width: 34px; height: 34px; font-size: 1.1rem; }
+            
+            /* Evita lo zoom forzato dei browser mobile portando gli input a 16px */
+            .input-tavolo, #ricerca-banco, .admin-form input, .admin-form select, .modal-box input { font-size: 16px !important; }
+            
+            #toast-container { left: 12px; right: 12px; bottom: 65px; }
+            .toast { min-width: auto; width: 100%; }
         }
     </style>
 </head>
-<body class="">
+<body>
 
     <header>
         <div class="brand">
             <h1>SmartCassa Pro</h1>
-            <span>Ultimate Edition</span>
+            <span>Mobile Ready</span>
         </div>
         <div class="nav-buttons">
             <button id="nav-cassa" class="btn-nav active" onclick="cambiaFinestra('CASSA')" title="Scorciatoia: F1">📊 Cassa</button>
-            <button id="nav-archivio" class="btn-nav" onclick="cambiaFinestra('ARCHIVIO')" title="Scorciatoia: F2">⚙️ Impostazioni</button>
+            <button id="nav-archivio" class="btn-nav" onclick="cambiaFinestra('ARCHIVIO')" title="Scorciamobile: F2">⚙️ Impostazioni</button>
         </div>
         <div class="header-tools">
             <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Cambia Tema">🌙</button>
@@ -308,11 +344,16 @@ Pagina
             
             <div class="blocco-pagamento">
                 <button id="btn-azione-contanti" class="btn-azione btn-paga-contanti" onclick="apriModalResto()" title="Scorciatoia: Barra Spaziatrice" disabled>💶 Contanti</button>
-                <button id="btn-azione-pos" class="btn-azione btn-paga-pos" onclick="chiudiEArchiviaOrdine('POS')" disabled>💳 POS / Carte</button>
+                <button id="btn-azione-pos" class="btn-azione btn-paga-pos" onclick="chiudiEArchiviaOrdine('POS')" disabled>💳 POS</button>
             </div>
             
             <button id="btn-azione-svuota" class="btn-azione btn-svuota" onclick="svuotaComanda()" disabled>Annulla operazione in corso</button>
         </aside>
+
+        <div class="mobile-cassa-bar">
+            <button id="mb-btn-menu" class="mobile-sub-btn active" onclick="switchMobileCassaView('menu')">🍽️ Vedi Menu</button>
+            <button id="mb-btn-comanda" class="mobile-sub-btn" onclick="switchMobileCassaView('comanda')">🛒 Comanda (<span id="mb-totale-badge">0,00 €</span>)</button>
+        </div>
     </div>
 
     <div id="pane-archivio" class="window-pane">
@@ -321,7 +362,7 @@ Pagina
                 
                 <div class="blocco-sinistro">
                     
-                    <div class="sezione-blocco" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="sezione-blocco grid-stats-archivio" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <div>
                             <h2 class="titolo-sezione" style="color: var(--primary);">📈 Top 5 Prodotti</h2>
                             <div id="grafico-top5" style="margin-top: 1rem;"></div>
@@ -333,7 +374,7 @@ Pagina
                     </div>
 
                     <div class="sezione-blocco">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
                             <h2 class="titolo-sezione" style="margin-bottom: 0;">Report Vendite Giornaliero</h2>
                             <button class="btn-mini-azione" onclick="esportaReportCSV()" style="font-weight:700;">📊 Scarica Excel (CSV)</button>
                         </div>
@@ -390,7 +431,7 @@ Pagina
                     </div>
 
                     <div class="sezione-blocco">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
                             <h2 class="titolo-sezione" id="titolo-modulo-admin" style="margin-bottom: 0;">Anagrafica Articoli</h2>
                             <select id="filtro-categoria-admin" style="padding: 0.4rem 0.6rem; font-size: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background:var(--surface); color:var(--text-main);" onchange="aggiornaTabellaReportEListino()">
                                 <option value="TUTTE">Tutte le Categorie</option>
@@ -431,7 +472,7 @@ Pagina
                                 <span style="font-size: 0.85rem; font-weight:600; display:block;">Salvataggio Sicuro</span>
                                 <span style="font-size: 0.75rem; color:var(--text-muted);">Esporta o importa il database JSON</span>
                             </div>
-                            <div style="display:flex; gap:0.5rem;">
+                            <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
                                 <button class="btn-mini-azione" onclick="esportaDatabaseCompleto()" style="font-weight:700;">📥 Export</button>
                                 <label class="btn-mini-azione" style="cursor:pointer; margin:0; font-weight:700;">
                                     📤 Import
@@ -447,7 +488,7 @@ Pagina
                     </div>
 
                     <div class="sezione-blocco">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
                             <h2 class="titolo-sezione" style="margin-bottom: 0;">Storico Chiusure Passate</h2>
                             <button class="btn-mini-azione btn-mini-elimina" onclick="apriModalAzzeraStorico()" style="font-weight:700;">🗑️ Svuota Storico</button>
                         </div>
@@ -465,7 +506,7 @@ Pagina
         <div class="modal-box">
             <h3>Varianti & Note</h3>
             <p>Inserisci specifiche per l'articolo selezionato.</p>
-            <input type="text" id="input-modal-nota" placeholder="Es: Senza ghiaccio, Ben cotto..." autocomplete="off">
+            <input type="text" id="input-modal-nota" placeholder="Es: Senza ghiaccio..." autocomplete="off">
             <div class="modal-actions">
                 <button class="btn-modal cancel" onclick="chiudiModalNota()">Annulla</button>
                 <button class="btn-modal confirm" onclick="salvaModalNota()">Applica Nota</button>
@@ -593,18 +634,33 @@ Pagina
         }
 
         const menuPredefinito = [
-            { id: 1, categoria: "piadine", nome: "Piadina Crudo e Squacquerone", prezzo: 6.50, attivo: true },
+            { id: 1, categoria: "piadine", nome: "Piadina Crudo e Fontina", prezzo: 6.50, attivo: true },
             { id: 2, categoria: "piadine", nome: "Piadina Cotto e Fontina", prezzo: 6.00, attivo: true },
-            { id: 3, categoria: "panini", nome: "Club Sandwich", prezzo: 8.00, attivo: true },
-            { id: 4, categoria: "panini", nome: "Cheeseburger", prezzo: 7.50, attivo: true },
-            { id: 5, categoria: "piatti", nome: "Cotoletta con Patatine", prezzo: 10.00, attivo: true },
-            { id: 6, categoria: "piatti", nome: "Insalatona Mixed", prezzo: 8.50, attivo: true },
-            { id: 7, categoria: "bevande", nome: "Acqua Naturale 0.5L", prezzo: 1.50, attivo: true },
-            { id: 8, categoria: "bevande", nome: "Coca Cola in Lattina", prezzo: 3.00, attivo: true },
-            { id: 9, categoria: "caffetteria", nome: "Caffè Espresso", prezzo: 1.20, attivo: true },
-            { id: 10, categoria: "caffetteria", nome: "Cappuccino", prezzo: 1.80, attivo: true },
-            { id: 11, categoria: "cocktail", nome: "Spritz Aperol", prezzo: 5.00, attivo: true },
-            { id: 12, categoria: "cocktail", nome: "Gin Tonic", prezzo: 7.00, attivo: true }
+            { id: 3, categoria: "piadine", nome: "Piadina Salame e Fontina", prezzo: 6.00, attivo: true },
+            { id: 4, categoria: "piadine", nome: "Piadina Crudo", prezzo: 5.50, attivo: true },
+            { id: 5, categoria: "piadine", nome: "Piadina Cotto", prezzo: 5.00, attivo: true },
+            { id: 6, categoria: "piadine", nome: "Piadina Salame", prezzo: 5.00, attivo: true },
+            { id: 7, categoria: "piadine", nome: "Piadina Salsiccia Cipolla e Peperoni", prezzo: 7.00, attivo: true },
+            { id: 8, categoria: "piadine", nome: "Piadina Stracchino e Rucola", prezzo: 5.50, attivo: true },
+            { id: 9, categoria: "piadine", nome: "Piadina Vuota", prezzo: 3.00, attivo: true },
+            { id: 10, categoria: "piadine", nome: "Piadina Nutella", prezzo: 4.50, attivo: true },
+            { id: 11, categoria: "panini", nome: "Panino Hamburger Cheddar Cipolla Insalata e Pomodori", prezzo: 8.00, attivo: true },
+            { id: 12, categoria: "panini", nome: "Panino Cotoletta Pomodori Insalata", prezzo: 7.00, attivo: true },
+            { id: 13, categoria: "piatti", nome: "Piatto Cotoletta Insalata Pomodori e Patate Fritte", prezzo: 12.00, attivo: true },
+            { id: 14, categoria: "piatti", nome: "Patate Fritte", prezzo: 4.00, attivo: true },
+            { id: 15, categoria: "bevande", nome: "Acqua Naturale 0.5L", prezzo: 1.50, attivo: true },
+            { id: 16, categoria: "bevande", nome: "Acqua Frizzante 0.5L", prezzo: 1.50, attivo: true },
+            { id: 17, categoria: "bevande", nome: "Coca Cola 33cl", prezzo: 3.00, attivo: true },
+            { id: 18, categoria: "bevande", nome: "Fanta 33cl", prezzo: 3.00, attivo: true },
+            { id: 19, categoria: "bevande", nome: "Birra alla Spina Media", prezzo: 5.00, attivo: true },
+            { id: 20, categoria: "caffetteria", nome: "Caffè Espresso", prezzo: 1.20, attivo: true },
+            { id: 21, categoria: "caffetteria", nome: "Caffè Corretto", prezzo: 2.00, attivo: true },
+            { id: 25, categoria: "caffetteria", nome: "Limoncello", prezzo: 3.00, attivo: true },
+            { id: 26, categoria: "caffetteria", nome: "Grappa", prezzo: 3.50, attivo: true },
+            { id: 27, categoria: "caffetteria", nome: "Amaro del Capo", prezzo: 3.00, attivo: true },
+            { id: 22, categoria: "cocktail", nome: "Aperol Spritz", prezzo: 5.00, attivo: true },
+            { id: 23, categoria: "cocktail", nome: "Mojito", prezzo: 6.00, attivo: true },
+            { id: 24, categoria: "cocktail", nome: "Gin Tonic", prezzo: 7.00, attivo: true }
         ];
 
         let elencoCategorie = JSON.parse(localStorage.getItem('st_categorie_v7')) || categoriePredefinite;
@@ -617,7 +673,7 @@ Pagina
         let comandaAttuale = [];
         
         let idArticoloInModifica = null;
-        let idRicevutaInModifica = null; // Gestione del progressivo scontrino in modifica
+        let idRicevutaInModifica = null;
         let vecchioNomeCatInModifica = null;
         let indexNotaModifica = null;
         let categoriaSelezionataBanco = "TUTTE";
@@ -651,6 +707,24 @@ Pagina
             setTimeout(() => toast.remove(), 2400);
         }
 
+        // SWITCH SCHEDE IN CASSA (MOBILE)
+        function switchMobileCassaView(tipo) {
+            const pane = document.getElementById('pane-cassa');
+            const btnMenu = document.getElementById('mb-btn-menu');
+            const btnComanda = document.getElementById('mb-btn-comanda');
+            if (!pane || !btnMenu || !btnComanda) return;
+
+            if (tipo === 'comanda') {
+                pane.classList.add('mobile-view-comanda');
+                btnComanda.classList.add('active');
+                btnMenu.classList.remove('active');
+            } else {
+                pane.classList.remove('mobile-view-comanda');
+                btnMenu.classList.add('active');
+                btnComanda.classList.remove('active');
+            }
+        }
+
         function cambiaFinestra(nomeFinestra) {
             document.querySelectorAll('.window-pane').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
@@ -658,6 +732,7 @@ Pagina
             if (nomeFinestra === 'CASSA') {
                 document.getElementById('pane-cassa').classList.add('active');
                 document.getElementById('nav-cassa').classList.add('active');
+                switchMobileCassaView('menu'); // Torna al menu al cambio pannello
                 disegnaTabsCategoriaBanco();
                 inizializzaBancoVendita();
             } else {
@@ -769,7 +844,18 @@ Pagina
             else comandaAttuale.push({ id: prod.id, nome: prod.nome, prezzo: prod.prezzo, quantita: 1, variazione: "" });
             
             aggiornaInterfacciaComanda();
-            setTimeout(() => document.getElementById('corpo-comanda').scrollTop = 9999, 50);
+            
+            // Animazione o piccolo feedback visivo per mobile se si aggiunge dal menu
+            if (window.innerWidth <= 1024) {
+                const badge = document.getElementById('mb-totale-badge');
+                badge.style.transform = 'scale(1.2)';
+                setTimeout(() => badge.style.transform = 'none', 150);
+            }
+            
+            setTimeout(() => {
+                const list = document.getElementById('corpo-comanda');
+                if(list) list.scrollTop = list.scrollHeight;
+            }, 50);
         }
 
         function cambiaQuantitaItem(idx, variaz) {
@@ -808,8 +894,8 @@ Pagina
                     li.innerHTML = `
                         <div class="item-riga-alta">
                             <div class="info-articolo-nome"><strong>${item.quantita}x</strong> ${item.nome}</div>
-                            <div style="display:flex; align-items:center; gap:0.5rem;">
-                                <span style="font-weight:700;">${formattaEuro(item.prezzo * item.quantita)}</span>
+                            <div style="display:flex; align-items:center; gap:0.6rem;">
+                                <span style="font-weight:700; font-size:0.9rem;">${formattaEuro(item.prezzo * item.quantita)}</span>
                                 <div class="controlli-qta">
                                     <button class="btn-modifica" onclick="cambiaQuantitaItem(${idx}, -1)">-</button>
                                     <button class="btn-modifica" onclick="cambiaQuantitaItem(${idx}, 1)">+</button>
@@ -823,6 +909,10 @@ Pagina
             }
 
             document.getElementById('totale-comanda').innerText = formattaEuro(netto);
+            
+            // Sincronizza il badge della barra inferiore su mobile
+            const mbBadge = document.getElementById('mb-totale-badge');
+            if (mbBadge) mbBadge.innerText = formattaEuro(netto);
 
             const bloccato = comandaAttuale.length === 0;
             ['btn-azione-ricevuta', 'btn-azione-cucina', 'btn-azione-bar', 'btn-azione-contanti', 'btn-azione-pos', 'btn-azione-svuota'].forEach(id => {
@@ -833,8 +923,9 @@ Pagina
         function svuotaComanda() {
             comandaAttuale = [];
             document.getElementById('num-tavolo').value = '';
-            idRicevutaInModifica = null; // Resetta lo stato di modifica della ricevuta
+            idRicevutaInModifica = null; 
             aggiornaInterfacciaComanda();
+            if (window.innerWidth <= 1024) switchMobileCassaView('menu');
             showToast("Comanda annullata.");
         }
 
@@ -900,7 +991,6 @@ Pagina
             });
 
             if (idRicevutaInModifica !== null) {
-                // CASO MODIFICA: Aggiorna la ricevuta esistente mantenendo l'ID originario
                 const idx = archivioRicevute.findIndex(r => r.id === idRicevutaInModifica);
                 if (idx !== -1) {
                     archivioRicevute[idx] = {
@@ -911,7 +1001,6 @@ Pagina
                     showToast(`Scontrino #${idRicevutaInModifica} modificato e salvato.`, "success");
                 }
             } else {
-                // CASO NUOVA RICEVUTA: Incrementa il contatore progressivo
                 const ricevuta = {
                     id: contatoreRicevute++, tavolo, totale: netto,
                     metodo, data: new Date().toISOString(), articoli: [...comandaAttuale]
@@ -924,7 +1013,6 @@ Pagina
             svuotaComanda();
         }
 
-        // RICHIAMO E STORNO SCONTRINI
         function richiamaRicevuta(id) {
             if (comandaAttuale.length > 0) {
                 showToast("Svuota la comanda attuale prima di richiamare uno scontrino!", "error");
@@ -946,24 +1034,23 @@ Pagina
 
             comandaAttuale = JSON.parse(JSON.stringify(ricevuta.articoli));
             document.getElementById('num-tavolo').value = ricevuta.tavolo || '';
-            
             idRicevutaInModifica = id; 
 
             salvaDatiLocali();
-            
             mostraArchivioRicevute();
             aggiornaTabellaReportEListino();
             aggiornaGrafici();
             
             cambiaFinestra('CASSA');
-            aggiornaInterfacciaComanda();
+            // Su mobile mostra subito la comanda richiamata
+            if (window.innerWidth <= 1024) switchMobileCassaView('comanda');
             
-            showToast(`Scontrino #${id} caricato in cassa per la modifica.`);
+            aggiornaInterfacciaComanda();
+            showToast(`Scontrino #${id} caricato per la modifica.`);
         }
 
-        // NUOVA FUNZIONE: Elimina completamente lo scontrino senza riportarlo in cassa
         function stornaDefinitivo(id) {
-            if(!confirm("Sicuro di voler eliminare definitivamente questo scontrino? L'incasso verrà sottratto dal totale di oggi.")) return;
+            if(!confirm("Sicuro di voler eliminare definitivamente questo scontrino? L'incasso verrà stornato.")) return;
             const idx = archivioRicevute.findIndex(r => r.id === id);
             if (idx === -1) return;
 
@@ -983,8 +1070,7 @@ Pagina
             mostraArchivioRicevute();
             aggiornaTabellaReportEListino();
             aggiornaGrafici();
-            
-            showToast(`Scontrino #${id} eliminato in modo definitivo.`, "success");
+            showToast(`Scontrino #${id} eliminato.`, "success");
         }
 
         function ristampaRicevuta(id) {
@@ -1047,7 +1133,7 @@ Pagina
             }
 
             if (reparto !== 'CLIENTE' && contaArticoliStampati === 0) {
-                showToast(`Nessun articolo in comanda per il reparto ${reparto}.`, "error");
+                showToast(`Nessun articolo per il reparto ${reparto}.`, "error");
                 return;
             }
 
@@ -1055,15 +1141,10 @@ Pagina
             window.print();
         }
 
-        /* --- Backup & Restore & Esportazione --- */
         function esportaDatabaseCompleto() {
             const data = {
-                categorie: elencoCategorie,
-                menu: databaseMenu,
-                vendite: storicovendites,
-                ricevute: archivioRicevute,
-                chiusure: storicoChiusure,
-                contatore: contatoreRicevute,
+                categorie: elencoCategorie, menu: databaseMenu, vendite: storicovendites,
+                ricevute: archivioRicevute, chiusure: storicoChiusure, contatore: contatoreRicevute,
                 dataBackup: new Date().toISOString()
             };
             const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
@@ -1082,18 +1163,12 @@ Pagina
                 try {
                     const data = JSON.parse(e.target.result);
                     if(data.categorie && data.menu) {
-                        elencoCategorie = data.categorie;
-                        databaseMenu = data.menu;
-                        storicovendites = data.vendite || {};
-                        archivioRicevute = data.ricevute || [];
-                        storicoChiusure = data.chiusure || [];
-                        contatoreRicevute = data.contatore || 1;
-                        salvaDatiLocali();
-                        cambiaFinestra('ARCHIVIO');
-                        showToast("Dati ripristinati correttamente dal backup.");
-                    } else {
-                        showToast("File di backup non valido.", "error");
-                    }
+                        elencoCategorie = data.categorie; databaseMenu = data.menu;
+                        storicovendites = data.vendite || {}; archivioRicevute = data.ricevute || [];
+                        storicoChiusure = data.chiusure || []; contatoreRicevute = data.contatore || 1;
+                        salvaDatiLocali(); cambiaFinestra('ARCHIVIO');
+                        showToast("Dati ripristinati correttamente.");
+                    } else { showToast("File di backup non valido.", "error"); }
                 } catch(err) { showToast("Errore lettura file.", "error"); }
             };
             reader.readAsText(file);
@@ -1102,45 +1177,25 @@ Pagina
 
         function esportaReportCSV() {
             let csv = "Categoria;Articolo;Quantita;Incasso (€)\n";
-            let totQta = 0;
-            let totIncasso = 0;
-
+            let totQta = 0; let totIncasso = 0;
             const righe = Object.entries(storicovendites).map(([n, d]) => ({
-                nome: n,
-                cat: (d.categoria || "Altro").toUpperCase(),
-                qta: d.qta,
-                incasso: d.incasso
+                nome: n, cat: (d.categoria || "Altro").toUpperCase(), qta: d.qta, incasso: d.incasso
             }));
-
             righe.sort((a, b) => a.cat.localeCompare(b.cat));
-
             righe.forEach(r => {
-                totQta += r.qta;
-                totIncasso += r.incasso;
+                totQta += r.qta; totIncasso += r.incasso;
                 csv += `"${r.cat}";"${r.nome}";${r.qta};"${r.incasso.toFixed(2).replace('.', ',')}"\n`;
             });
-
             csv += `\n"TOTALE GENERALE";"";${totQta};"${totIncasso.toFixed(2).replace('.', ',')}"\n\n`;
-
-            csv += `\n"--- TOP 10 PRODOTTI PIU' VENDUTI ---"\n`;
-            csv += `"Posizione";"Articolo";"Quantita";"Incasso (€)"\n`;
             
-            const top10 = [...righe].sort((a, b) => b.qta - a.qta).slice(0, 10);
-            top10.forEach((r, idx) => {
-                csv += `"${idx + 1}";"${r.nome}";${r.qta};"${r.incasso.toFixed(2).replace('.', ',')}"\n`;
-            });
-
             const bom = "\uFEFF";
             const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
-            a.href = url; 
-            a.download = `Report_Vendite_${new Date().toISOString().split('T')[0]}.csv`; 
-            a.click();
+            a.href = url; a.download = `Report_Vendite_${new Date().toISOString().split('T')[0]}.csv`; a.click();
             URL.revokeObjectURL(url);
         }
 
-        /* --- STATISTICHE VISIVE (HTML/CSS) --- */
         function aggiornaGrafici() {
             const righe = Object.entries(storicovendites).map(([n, d]) => ({nome: n, qta: d.qta}));
             righe.sort((a, b) => b.qta - a.qta);
@@ -1156,11 +1211,11 @@ Pagina
                         <span>${r.qta} pz</span>
                     </div>
                     <div style="background:var(--input-bg); border:1px solid var(--border); border-radius:4px; height:10px; width:100%; overflow:hidden;">
-                        <div style="background:var(--primary); width:${perc}%; height:100%; transition: width 0.5s ease;"></div>
+                        <div style="background:var(--primary); width:${perc}%; height:100%;"></div>
                     </div>
                 </div>`;
             });
-            document.getElementById('grafico-top5').innerHTML = htmlTop || '<p style="font-size:0.85rem; color:var(--text-muted)">Nessun dato di vendita oggi.</p>';
+            document.getElementById('grafico-top5').innerHTML = htmlTop || '<p style="font-size:0.85rem; color:var(--text-muted)">Nessun dato oggi.</p>';
 
             const ore = new Array(24).fill(0);
             let maxIncasso = 0;
@@ -1170,20 +1225,19 @@ Pagina
                 if(ore[h] > maxIncasso) maxIncasso = ore[h];
             });
             
-            let htmlOre = '<div style="display:flex; align-items:flex-end; gap:2px; height:120px; width:100%; padding-top:10px;">';
+            let htmlOre = '<div style="display:flex; align-items:flex-end; gap:3px; height:120px; width:100%; padding-top:10px;">';
             for(let i=7; i<24; i++) {
                 let p = maxIncasso > 0 ? (ore[i] / maxIncasso) * 100 : 0;
                 let activeColor = ore[i] > 0 ? 'var(--info)' : 'var(--border)';
-                htmlOre += `<div style="flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center;" title="Ore ${i}:00 = ${formattaEuro(ore[i])}">
-                    <div style="width:80%; background:${activeColor}; height:${p}%; border-radius:3px 3px 0 0; min-height:${p>0?4:1}px; transition: height 0.5s ease;"></div>
-                    <span style="font-size:0.65rem; color:var(--text-muted); margin-top:4px; font-weight:700;">${i}</span>
+                htmlOre += `<div style="flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center;" title="Ore ${i}:00">
+                    <div style="width:100%; background:${activeColor}; height:${p}%; border-radius:2px 2px 0 0; min-height:${p>0?4:1}px;"></div>
+                    <span style="font-size:0.6rem; color:var(--text-muted); margin-top:4px; font-weight:700;">${i}</span>
                 </div>`;
             }
             htmlOre += '</div>';
             document.getElementById('grafico-ore').innerHTML = htmlOre;
         }
 
-        /* --- GESTIONE DATI LOCALI E CHIUSURE --- */
         function salvaDatiLocali() {
             localStorage.setItem('st_categorie_v7', JSON.stringify(elencoCategorie));
             localStorage.setItem('st_menu_v7', JSON.stringify(databaseMenu));
@@ -1222,7 +1276,7 @@ Pagina
                 elencoCategorie.push(v); 
             }
             salvaDatiLocali(); annullaStatoModificaCat(); aggiornaElencoCategorieAdmin(); aggiornaTabellaReportEListino();
-            showToast("Categoria salvata e sincronizzata.");
+            showToast("Categoria modificata.");
         }
         function avviaModificaCategoria(nome) { vecchioNomeCatInModifica = nome; document.getElementById('nuova-cat-nome').value = nome; document.getElementById('btn-annulla-cat').style.display='inline-block'; }
         function annullaStatoModificaCat() { vecchioNomeCatInModifica = null; document.getElementById('nuova-cat-nome').value=''; document.getElementById('btn-annulla-cat').style.display='none'; }
@@ -1254,8 +1308,10 @@ Pagina
             while(target >= 0 && target < databaseMenu.length && databaseMenu[target].categoria !== cat) target += dir;
             if(target < 0 || target >= databaseMenu.length) return;
             [databaseMenu[idx], databaseMenu[target]] = [databaseMenu[target], databaseMenu[idx]];
-            salvaDatiLocali(); aggiornaTabellaReportEListino();
+            salvaDLocal(); aggiornaTabellaReportEListino();
         }
+        function salvaDLocal() { salvaDatiLocali(); }
+
         function avviaModificaProdotto(id) {
             const p = databaseMenu.find(x=>x.id===id); if(!p) return;
             document.getElementById('nuovo-nome').value = p.nome; document.getElementById('nuovo-prezzo').value = p.prezzo;
@@ -1266,13 +1322,14 @@ Pagina
             idArticoloInModifica = null; document.getElementById('nuovo-nome').value = ''; document.getElementById('nuovo-prezzo').value = '';
             document.getElementById('blocco-modulo-admin').classList.remove('editing-mode'); document.getElementById('btn-annulla-articolo').style.display='none';
         }
+        function aggiungereOAggiorna() { aggiungiOAggiornaProdottoAlListinoMenu(); }
         function aggiungiOAggiornaProdottoAlListinoMenu() {
             const n = document.getElementById('nuovo-nome').value.trim(), p = parseFloat(document.getElementById('nuovo-prezzo').value), c = document.getElementById('nuova-categoria').value;
             if(!n || isNaN(p) || p<0) return showToast("Campi non validi", "error");
             if(idArticoloInModifica) { const idx = databaseMenu.findIndex(x=>x.id===idArticoloInModifica); databaseMenu[idx]={...databaseMenu[idx], nome:n, prezzo:p, categoria:c}; }
             else { databaseMenu.push({id: databaseMenu.length? Math.max(...databaseMenu.map(x=>x.id))+1 : 1, categoria:c, nome:n, prezzo:p, attivo:true}); }
             salvaDatiLocali(); annullaStatoModifica(); aggiornaTabellaReportEListino();
-            showToast("Articolo salvato correttamente.");
+            showToast("Articolo registrato.");
         }
         function cambiaStatoAttivoProdotto(id) { const p = databaseMenu.find(x=>x.id===id); if(p){ p.attivo = p.attivo===false; salvaDatiLocali(); aggiornaTabellaReportEListino(); } }
 
@@ -1284,7 +1341,7 @@ Pagina
         function mostraArchivioRicevute() {
             const c = document.getElementById('lista-ricevute-storico'); if(!c) return; c.innerHTML = '';
             if(archivioRicevute.length === 0) {
-                c.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); padding:1rem;">Nessuna ricevuta in archivio per oggi.</p>';
+                c.innerHTML = '<p style="font-size:0.85rem; color:var(--text-muted); padding:1rem;">Nessuno scontrino oggi.</p>';
                 return;
             }
             archivioRicevute.forEach(r => {
@@ -1294,10 +1351,10 @@ Pagina
                 d.innerHTML = `<div style="display:flex;justify-content:space-between"><div><b>#${r.id}</b>${r.tavolo ? ` - ${r.tavolo}` : ''}<br><small>${new Date(r.data).toLocaleTimeString()} • ${r.metodo}</small></div><b>${formattaEuro(r.totale)}</b></div>
                 <div class="ricevuta-dettaglio">
                     ${r.articoli.map(a=>`${a.quantita}x ${a.nome}`).join('<br>')}
-                    <div style="margin-top: 10px; display: flex; gap: 5px; justify-content: flex-end;">
+                    <div style="margin-top: 10px; display: flex; gap: 5px; justify-content: flex-end; flex-wrap: wrap;">
                         <button class="btn-mini-azione" onclick="ristampaRicevuta(${r.id})">🖨️ Ristampa</button>
-                        <button class="btn-mini-azione btn-mini-modifica" onclick="richiamaRicevuta(${r.id})" title="Riporta in cassa per modificare">📝 Modifica</button>
-                        <button class="btn-mini-azione btn-mini-elimina" onclick="stornaDefinitivo(${r.id})" title="Elimina definitivamente">🗑️ Elimina</button>
+                        <button class="btn-mini-azione btn-mini-modifica" onclick="richiamaRicevuta(${r.id})">📝 Modifica</button>
+                        <button class="btn-mini-azione btn-mini-elimina" onclick="stornaDefinitivo(${r.id})">🗑️ Storna</button>
                     </div>
                 </div>`;
                 c.appendChild(d);
@@ -1312,7 +1369,7 @@ Pagina
             }
             storicoChiusure.forEach(r => {
                 const d = document.createElement('div'); d.className = 'ricevuta-card-item'; d.onclick = ()=>d.classList.toggle('expanded');
-                d.innerHTML = `<div style="display:flex;justify-content:space-between"><div><b>Data:</b> ${new Date(r.data).toLocaleDateString('it-IT')}<br><small>Clicca per dettagli</small></div><b>${formattaEuro(r.totale)}</b></div>
+                d.innerHTML = `<div style="display:flex;justify-content:space-between"><div><b>Data:</b> ${new Date(r.data).toLocaleDateString('it-IT')}<br><small>Tocca per i dettagli</small></div><b>${formattaEuro(r.totale)}</b></div>
                 <div class="ricevuta-dettaglio">Contanti: <b>${formattaEuro(r.contanti)}</b><br>POS: <b>${formattaEuro(r.pos)}</b></div>`;
                 c.appendChild(d);
             });
@@ -1328,44 +1385,28 @@ Pagina
                 if(r.metodo === 'CONTANTI') c += r.totale;
                 else p += r.totale;
             });
-            
             if (tot > 0) {
-                storicoChiusure.unshift({
-                    data: new Date().toISOString(),
-                    totale: tot,
-                    contanti: c,
-                    pos: p
-                });
+                storicoChiusure.unshift({ data: new Date().toISOString(), totale: tot, contanti: c, pos: p });
             }
-
             storicovendites = {}; archivioRicevute = []; contatoreRicevute = 1;
-            salvaDatiLocali(); 
-            chiudiModalAzzera(); 
-            aggiornaTabellaReportEListino(); 
-            mostraArchivioRicevute();
-            mostraStoricoChiusure();
-            aggiornaGrafici();
-            showToast("Giornata Chiusa. Dati salvati nello storico.");
+            salvaDatiLocali(); chiudiModalAzzera(); aggiornaTabellaReportEListino(); 
+            mostraArchivioRicevute(); mostraStoricoChiusure(); aggiornaGrafici();
+            showToast("Giornata Chiusa. Cassa azzerata.");
         }
 
-        // Funzioni per azzerare lo storico
         function apriModalAzzeraStorico() { document.getElementById('modal-azzera-storico').classList.add('active'); }
         function chiudiModalAzzeraStorico() { document.getElementById('modal-azzera-storico').classList.remove('active'); }
         function azzeraStoricoChiusure() {
-            storicoChiusure = [];
-            salvaDatiLocali();
-            chiudiModalAzzeraStorico();
-            mostraStoricoChiusure();
-            showToast("Storico chiusure eliminato.");
+            storicoChiusure = []; salvaDatiLocali(); chiudiModalAzzeraStorico(); mostraStoricoChiusure();
+            showToast("Storico cancellato.");
         }
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(err => console.log('PWA SW non registrato', err));
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Error', err));
             });
         }
 
-        // Listener varianti e resto
         document.getElementById('input-modal-nota').addEventListener('keypress', (e) => { if(e.key === 'Enter') salvaModalNota(); });
         document.getElementById('input-contante').addEventListener('keypress', (e) => { 
             if(e.key === 'Enter' && !document.getElementById('btn-conferma-resto').disabled) confermaPagamentoContanti(); 
@@ -1374,12 +1415,10 @@ Pagina
         window.onload = () => {
             cambiaFinestra('CASSA');
             aggiornaInterfacciaFormatoStampa();
-            
-            if (!elencoCategorie.includes('piadine') && !elencoCategorie.includes('cocktail')) {
+            if (!elencoCategorie.includes('piadine') || !elencoCategorie.includes('caffetteria')) {
                 forzaResetCategorieNuove();
             }
         };
     </script>
 </body>
 </html>
-
